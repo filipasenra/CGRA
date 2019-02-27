@@ -19,7 +19,7 @@ class MyInterface extends CGFinterface {
         //Checkbox element in GUI
         this.gui.add(this.scene, 'displayAxis').name('Display Axis');
 
-        //Checkbox Diamond
+       /* //Checkbox Diamond
         this.gui.add(this.scene, 'displayDiamond').name('Display Diamond');
 
         //Checkbox Triangle
@@ -31,11 +31,14 @@ class MyInterface extends CGFinterface {
         //Checkbox TriangleSmall
         this.gui.add(this.scene, 'displayTriangleSmall').name('Display Small Triangle');
 
+        //Checkbox TriangleSmall2
+        this.gui.add(this.scene, 'displayTriangleSmall2').name('Display Small Triangle2');
+
         //Checkbox TriangleBig
         this.gui.add(this.scene, 'displayTriangleBig').name('Display Big Triangle');
 
         //Checkbox TriangleBig
-        this.gui.add(this.scene, 'displayTriangleBig2').name('Display Big Triangle2');
+        this.gui.add(this.scene, 'displayTriangleBig2').name('Display Big Triangle2');*/
 
         //Slider element in GUI
         this.gui.add(this.scene, 'scaleFactor', 0.1, 5).name('Scale Factor');
