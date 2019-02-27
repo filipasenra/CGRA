@@ -34,6 +34,9 @@ class MyInterface extends CGFinterface {
         //Checkbox TriangleBig
         this.gui.add(this.scene, 'displayTriangleBig').name('Display Big Triangle');
 
+        //Checkbox TriangleBig
+        this.gui.add(this.scene, 'displayTriangleBig2').name('Display Big Triangle2');
+
         //Slider element in GUI
         this.gui.add(this.scene, 'scaleFactor', 0.1, 5).name('Scale Factor');
 

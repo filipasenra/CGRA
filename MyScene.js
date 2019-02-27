@@ -26,6 +26,7 @@ class MyScene extends CGFscene {
         this.parallelogram = new MyParellelogram(this);
         this.triangleSmall = new MyTriangleSmall(this);
         this.triangleBig = new MyTriangleBig(this);
+        this.triangleBig2 = new MyTriangleBig(this);
 
         //Objects connected to MyInterface
         this.displayAxis = true;
@@ -34,6 +35,7 @@ class MyScene extends CGFscene {
         this.displayParallelogram = true;
         this.displayTriangleSmall = true;
         this.displayTriangleBig = true;
+        this.displayTriangleBig2 = true;
         this.scaleFactor = 1;
     }
     initLights() {
@@ -74,18 +76,37 @@ class MyScene extends CGFscene {
                     0.0, 0.0, 0.0, 1.0];
         
         this.multMatrix(sca);
-            this.pushMatrix();
-        var mu = [1.0, 0.0, 0.0, -2.0,
-            0.0, 1.0, 0.0, -1.0,
-            0.0, 0.0, 1.0, 1.0,
-            0.0, 0.0, 0.0, 1.0];
-            
-            this.multMatrix(mu);
+        this.pushMatrix();
 
-        // ---- BEGIN Primitive drawing section
+        //alteration diamond
+        this.translate(2.10,0.70,0);
+        this.rotate(Math.PI/4,0,0,1);
+
         if(this.displayDiamond)
-            this.diamond.display();
+        this.diamond.display();
+            
+        this.popMatrix();
         
+        this.pushMatrix();
+        //alteration triangle big
+        this.translate(1.40,-1.40,0);
+        this.rotate(Math.PI/4,0,0,1);
+
+        if(this.displayTriangleBig)
+            this.triangleBig.display();
+
+        this.popMatrix();
+        this.pushMatrix();
+
+        this.translate(-1.40,-0.25,0);
+        this.rotate(-Math.PI/4,0,0,1);
+
+        if(this.displayTriangleBig2)
+            this.triangleBig2.display();
+
+        this.popMatrix();
+        this.pushMatrix();
+
         if(this.displayTriangle)
             this.triangle.display();
 
@@ -95,8 +116,6 @@ class MyScene extends CGFscene {
         if(this.displayTriangleSmall)
             this.triangleSmall.display();
             
-        if(this.displayTriangleBig)
-            this.triangleBig.display();
 
         // ---- END Primitive drawing section
     }
