@@ -26,7 +26,7 @@ class MyScene extends CGFscene {
 
         //Objects connected to MyInterface
         this.displayAxis = true;
-        this.displayTangram = false;
+        this.displayTangram = true;
         this.scaleFactor = 1;
     }
     initLights() {
@@ -67,10 +67,15 @@ class MyScene extends CGFscene {
             0.0, 0.0, 0.0, 1.0];
 
         this.multMatrix(sca);
+        this.translate(0.5,0, 0.5);
+        this.rotate(-Math.PI/2, 1, 0, 0);
 
         if (this.displayTangram)
             this.tangram.display();
 
+        this.pushMatrix();
+        this.translate(0,0, -0.5);
         this.unitCube.display();
+        this.popMatrix();
     }
 }
