@@ -26,8 +26,19 @@ class MyTangram extends CGFobject {
         this.scene.pushMatrix();
 
         //alteration diamond
-        this.scene.translate(2.10, 0.70, 0);
-        this.scene.rotate(Math.PI / 4, 0, 0, 1);
+        var rot =[1.0, 0.0, 0.0, 0.0,
+                  0.0, 1.0, 0.0, 0.0,
+                  0.0, 0.0, 1.0, 0.0,
+                  2.10, 0.7, 0.0, 1.0];
+        
+        var transl = [Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0.0, 0.0,
+                      Math.sin(Math.PI/4), Math.cos(Math.PI/4), 0.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0,
+                      0.0, 0.0, 0.0, 1.0];
+        
+        this.scene.multMatrix(rot);
+        this.scene.multMatrix(transl);
+        // this.scene.rotate(Math.PI / 4, 0, 0, 1);
 
         this.diamond.display();
 
