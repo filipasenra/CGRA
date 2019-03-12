@@ -4,10 +4,8 @@
  * @param scene - Reference to MyScene object
  */
 class MyUnitCube extends CGFobject {
-    constructor(scene, slices, stacks) {
+    constructor(scene) {
         super(scene);
-        this.slices = slices;
-        this.stacks = stacks;
         this.initBuffers();
     }
     initBuffers() {
@@ -119,6 +117,12 @@ class MyUnitCube extends CGFobject {
 
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();
+    }
+
+    updateBuffers(complexity){
+        // reinitialize buffers
+        this.initBuffers();
+        this.initNormalVizBuffers();
     }
 }
 

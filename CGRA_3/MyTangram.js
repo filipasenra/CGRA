@@ -21,6 +21,14 @@ class MyTangram extends CGFobject {
         this.triangleBig2 = new MyTriangleBig(scene);
     }
 
+    enableNormalViz()
+    {
+        this.diamond.enableNormalViz();
+        this.triangle.enableNormalViz();
+        this.triangleSmall.enableNormalViz();
+        this.triangleSmall2.enableNormalViz();
+    }
+
     display() {
 
         this.scene.pushMatrix();
