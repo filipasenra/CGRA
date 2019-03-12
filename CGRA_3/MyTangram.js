@@ -27,6 +27,9 @@ class MyTangram extends CGFobject {
         this.triangle.enableNormalViz();
         this.triangleSmall.enableNormalViz();
         this.triangleSmall2.enableNormalViz();
+        this.triangleBig.enableNormalViz();
+        this.triangleBig2.enableNormalViz();
+        this.parallelogram.enableNormalViz();
     }
 
     display() {
@@ -105,6 +108,12 @@ class MyTangram extends CGFobject {
         this.scene.popMatrix();
 
         // ---- END Primitive drawing section
+    }
+
+    updateBuffers(complexity){
+        // reinitialize buffers
+        this.initBuffers();
+        this.initNormalVizBuffers();
     }
 }
 
