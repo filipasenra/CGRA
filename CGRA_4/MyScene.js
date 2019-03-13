@@ -24,6 +24,7 @@ class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.quad = new MyQuad(this);
+        this.tangram = new MyTangram(this);
 
         //------ Applied Material
         this.quadMaterial = new CGFappearance(this);
@@ -33,6 +34,7 @@ class MyScene extends CGFscene {
         this.quadMaterial.setShininess(10.0);
         this.quadMaterial.loadTexture('images/default.png');
         this.quadMaterial.setTextureWrap('REPEAT', 'REPEAT');
+        
         //------
 
         //------ Textures
@@ -43,7 +45,10 @@ class MyScene extends CGFscene {
 
         //-------Objects connected to MyInterface
         this.displayAxis = true;
-        this.scaleFactor = 5;
+        this.displayQuad = true;
+        this.displayQuadMaterial = true;
+        this.displayTangram = true;
+        this.scaleFactor = 1;
         this.selectedTexture = -1;        
         this.wrapS = 0;
         this.wrapT = 0;
@@ -113,6 +118,7 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
+        if( this.displayQuadMaterial)
         this.quadMaterial.apply();
 
         // Default texture filtering in WebCGF is LINEAR. 
@@ -121,7 +127,13 @@ class MyScene extends CGFscene {
         
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
 
+        if(this.displayQuad)
         this.quad.display();
+
+        //display tangram
+        if(this.displayTangram)
+        this.tangram.display();
+
 
         // ---- END Primitive drawing section
     }
