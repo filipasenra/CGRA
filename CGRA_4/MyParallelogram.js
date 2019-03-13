@@ -40,6 +40,18 @@ class MyParellelogram extends CGFobject {
 			0, 0, -1
 		];
 
+		this.texCoords = [
+			1, 1,
+			0.5, 1,
+			0.75, 0.75,
+			0.25, 0.75,
+
+			1, 1,
+			0.5, 1,
+			0.75, 0.75,
+			0.25, 0.75,
+		]
+
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	}
