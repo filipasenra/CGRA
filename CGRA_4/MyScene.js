@@ -43,6 +43,9 @@ class MyScene extends CGFscene {
         this.texture2 = new CGFtexture(this, 'images/floor.png');
         this.texture3 = new CGFtexture(this, 'images/window.jpg');
         this.texture4 = new CGFtexture(this, 'images/tangram.png');
+        this.texture5 = new CGFtexture(this, 'images/mineSide.png');
+        this.texture6 = new CGFtexture(this, 'images/mineTop.png');
+        this.texture7 = new CGFtexture(this, 'images/mineBottom.png');
         //-------
 
         //-------Objects connected to MyInterface
@@ -56,11 +59,11 @@ class MyScene extends CGFscene {
         this.wrapS = 0;
         this.wrapT = 0;
 
-        this.textures = [this.texture1, this.texture2, this.texture3, this.texture4];
+        this.textures = [this.texture1, this.texture2, this.texture3, this.texture4, this.texture5, this.texture6, this.texture7];
         this.texCoords = [0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0];
         this.wrappingMethods = ['REPEAT', 'CLAMP_TO_EDGE', 'MIRRORED_REPEAT'];
 
-        this.textureIds = { 'Board': 0, 'Floor': 1, 'Window': 2, 'Tangram': 3};
+        this.textureIds = { 'Board': 0, 'Floor': 1, 'Window': 2, 'Tangram': 3 , 'mineSide': 4, 'mineTop': 5, 'mineBottom': 6};
         this.wrappingS = { 'Repeat': 0, 'Clamp to edge': 1, 'Mirrored repeat': 2 };
         this.wrappingT = { 'Repeat': 0, 'Clamp to edge': 1, 'Mirrored repeat': 2 };
 

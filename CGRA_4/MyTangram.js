@@ -77,7 +77,7 @@ class MyTangram extends CGFobject {
     display() {
 
         this.scene.pushMatrix();
-        //this.scene.materials[4].apply();
+        this.green.apply();
 
         //alteration diamond
         var rot = [1.0, 0.0, 0.0, 0.0,
@@ -92,14 +92,14 @@ class MyTangram extends CGFobject {
 
         this.scene.multMatrix(rot);
         this.scene.multMatrix(transl);
-        // this.scene.rotate(Math.PI / 4, 0, 0, 1);
+       // this.scene.rotate(Math.PI / 4, 0, 0, 1);
 
         this.diamond.display();
 
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        //this.blue.apply();
+        this.blue.apply();
         //alteration triangle big
         this.scene.translate(1.40, -1.40, 0);
         this.scene.rotate(Math.PI / 4, 0, 0, 1);
@@ -109,7 +109,7 @@ class MyTangram extends CGFobject {
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        //this.orange.apply();
+        this.orange.apply();
         this.scene.translate(-1.40, -0.25, 0);
         this.scene.rotate(-Math.PI / 4, 0, 0, 1);
 
@@ -121,7 +121,7 @@ class MyTangram extends CGFobject {
         //alteration triangle small
 
         this.scene.translate(2.4, 1.40, 0);
-        //this.red.apply();
+        this.red.apply();
 
         this.triangleSmall.display();
 
@@ -130,7 +130,7 @@ class MyTangram extends CGFobject {
 
         this.scene.translate(2.30, -1.50, 0);
         this.scene.rotate(Math.PI / 2, 0, 0, 1);
-        //this.purple.apply();
+        this.purple.apply();
 
         this.triangleSmall2.display();
 
@@ -140,7 +140,7 @@ class MyTangram extends CGFobject {
         //alteration triangle
         this.scene.translate(-1.40, 1.15, 0);
         this.scene.rotate(-3 * Math.PI / 4, 0, 0, 1);
-        //this.pink.apply();
+        this.pink.apply();
 
         this.triangle.display();
 
@@ -151,7 +151,7 @@ class MyTangram extends CGFobject {
         this.scene.translate(-2.8, 1.15, 0);
         this.scene.rotate(-Math.PI / 4, 0, 0, 1);
         this.scene.rotate(Math.PI, 1, 0, 0);
-        //this.yellow.apply();
+        this.yellow.apply();
 
         this.parallelogram.display();
 
