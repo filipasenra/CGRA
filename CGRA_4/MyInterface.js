@@ -20,8 +20,10 @@ class MyInterface extends CGFinterface {
         this.gui.add(this.scene, 'displayAxis').name('Display Axis');
         //Checkbox quad
         this.gui.add(this.scene, 'displayQuad').name('Display Quad');
-        //Checkbox quad
+        //Checkbox quad Material
         this.gui.add(this.scene, 'displayQuadMaterial').name('Display QuadMaterial');
+        //Checkbox cube
+        this.gui.add(this.scene, 'displayCube').name('Display Cube');
 
         //Checkbox quad
         this.gui.add(this.scene, 'displayTangram').name('Display Tangram');
