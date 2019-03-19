@@ -31,7 +31,8 @@ class MyUnitCubeQuad extends CGFobject {
     }
 
     display() {
-//quad1
+
+        //quad1
         this.scene.pushMatrix();
 
         this.scene.quadMaterial.setTexture(this.scene.textures[4])
@@ -42,7 +43,8 @@ class MyUnitCubeQuad extends CGFobject {
         this.quad1.display();
 
         this.scene.popMatrix();
-//quad2
+
+        //quad2
         this.scene.pushMatrix();
 
         this.scene.quadMaterial.setTexture(this.scene.textures[6])
@@ -53,18 +55,20 @@ class MyUnitCubeQuad extends CGFobject {
         this.quad2.display();
 
         this.scene.popMatrix();
-//quad3
+
+        //quad3
         this.scene.pushMatrix();
 
         this.scene.quadMaterial.setTexture(this.scene.textures[5])
         this.scene.quadMaterial.apply();
-        
+
         this.scene.translate(0, 0.5, 0.5);
         this.scene.rotate(-Math.PI / 2, 1, 0, 0);
         this.quad3.display();
 
         this.scene.popMatrix();
-//quad4
+
+        //quad4
         this.scene.pushMatrix();
 
         this.scene.quadMaterial.setTexture(this.scene.textures[4])
@@ -74,7 +78,8 @@ class MyUnitCubeQuad extends CGFobject {
         this.quad4.display();
 
         this.scene.popMatrix();
-//quad5
+
+        //quad5
         this.scene.pushMatrix();
 
         this.scene.quadMaterial.setTexture(this.scene.textures[4])
@@ -85,7 +90,8 @@ class MyUnitCubeQuad extends CGFobject {
         this.quad5.display();
 
         this.scene.popMatrix();
-//quad6
+
+        //quad6
         this.scene.pushMatrix();
 
         this.scene.quadMaterial.setTexture(this.scene.textures[4])
@@ -96,6 +102,8 @@ class MyUnitCubeQuad extends CGFobject {
         this.quad6.display();
 
         this.scene.popMatrix();
+        this.scene.updateAppliedTexture();
+        
         // ---- END Primitive drawing section
     }
 
