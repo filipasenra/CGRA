@@ -23,14 +23,21 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
 
         //Objects connected to MyInterface
-        this.pyramid = new MyPrism(this, 4, 4);
-        this.cylinder = new MyCylinder(this, 4, 4);
+        /*this.pyramid = new MyPrism(this, 4, 4);
+        this.cylinder = new MyCylinder(this, 10, 10);*/
+        this.tree = new MyTree(this, 2, 0.5, 1.5, 1);
     }
     initLights() {
-        this.lights[0].setPosition(15, 2, 5, 1);
+        this.lights[0].setPosition(10, 2, 5, 1);
         this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
         this.lights[0].enable();
         this.lights[0].update();
+
+        this.lights[1].setPosition(0.0, -1.0, 2.0, 1.0);
+        this.lights[1].setDiffuse(1.0, 1.0, 1.0, 1.0);
+        this.lights[1].setSpecular(1.0, 1.0, 0.0, 1.0);
+        this.lights[1].enable();
+        this.lights[1].update();
     }
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
@@ -61,7 +68,9 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         //this.pyramid.display();
-        this.cylinder.display();
+        //this.cylinder.display();
+
+        this.tree.display();
 
         // ---- END Primitive drawing section
     }

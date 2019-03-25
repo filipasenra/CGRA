@@ -15,57 +15,34 @@ class MyCylinder extends CGFobject {
         this.normals = [];
 
         var ang = 0;
-        var alphaAng = 2*Math.PI/this.slices;
+        var alphaAng = 2 * Math.PI / this.slices;
+        var division = 1.0 / this.stacks;
 
-        for(var i = 0; i < this.slices; i++){
-            // All vertices have to be declared for a given face
-            // even if they are shared with others, as the normals 
-            // in each face will be different
+        //let's later understand how this works
+        for (let k = 0; k <= this.stacks; k++) {
+            for (let i = 0; i < this.slices; i++) {
 
-            var sa=Math.sin(ang);
-            var saa=Math.sin(ang+alphaAng);
-            var ca=Math.cos(ang);
-            var caa=Math.cos(ang+alphaAng);
+                this.vertices.push(Math.cos(i * alphaAng),  k * division, -Math.sin(i * alphaAng));
+                this.normals.push(Math.cos(i * alphaAng), 0, -Math.sin(i * alphaAng));
 
-            this.vertices.push(ca,1,-sa);
-            this.vertices.push(ca, 0, -sa);
-            this.vertices.push(caa, 0, -saa);
-            this.vertices.push(caa, 1, -saa);
+                if (k != 0 && i != 0) {
+                    this.indices.push(this.slices * k + i - 1, this.slices * (k - 1) + i - 1, this.slices * (k - 1) + i);
+                    this.indices.push(this.slices * k + i - 1, this.slices * (k - 1) + i, this.slices * k + i);
 
-            // triangle normal computed by cross product of two edges
-            var normal= [
-                saa-sa,
-                ca*saa-sa*caa,
-                caa-ca
-            ];
-
-            // normalization
-            var nsize=Math.sqrt(
-                normal[0]*normal[0]+
-                normal[1]*normal[1]+
-                normal[2]*normal[2]
-                );
-            normal[0]/=nsize;
-            normal[1]/=nsize;
-            normal[2]/=nsize;
-
-            // push normal once for each vertex of this triangle
-            this.normals.push(Math.cos(ang), Math.cos(Math.PI/4.0), -Math.sin(ang));
-            this.normals.push(Math.cos(ang), Math.cos(Math.PI/4.0), -Math.sin(ang));
-            this.normals.push(Math.cos(ang), Math.cos(Math.PI/4.0), -Math.sin(ang));
-            this.normals.push(Math.cos(ang), Math.cos(Math.PI/4.0), -Math.sin(ang));
-
-           this.indices.push(4*i, (4*i+1) , (4*i+2),
-                            (4*i+2), (4*i+3), (4*i));
-
-            ang+=alphaAng;
+                    if (i == (this.slices - 1)) {
+                        this.indices.push(this.slices * (k - 1) + i, this.slices * (k - 1), this.slices * k + i);
+                        this.indices.push(this.slices * k + i, this.slices * (k - 1), this.slices * k);
+                    }
+                }
+            }
         }
+
 
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();
     }
-    
-    updateBuffers(complexity){
+
+    updateBuffers(complexity) {
         this.slices = 3 + Math.round(9 * complexity); //complexity varies 0-1, so slices varies 3-12
 
         // reinitialize buffers
