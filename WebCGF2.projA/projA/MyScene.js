@@ -23,7 +23,8 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
 
         //Objects connected to MyInterface
-        this.treeGroupPatch = new MyTreeGroupPatch(this);
+        //this.treeGroupPatch = new MyTreeGroupPatch(this);
+        this.treeRowPatch = new MyTreeRowPatch(this);
     }
     initLights() {
         this.lights[0].setPosition(10, 2, 5, 1);
@@ -65,11 +66,8 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
-        //this.pyramid.display();
-        //this.cylinder.display();
-
-        this.treeGroupPatch.display();
-
+        //this.treeGroupPatch.display();
+        this.treeRowPatch.display();
         // ---- END Primitive drawing section
     }
 }
