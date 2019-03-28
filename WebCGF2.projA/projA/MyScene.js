@@ -24,7 +24,10 @@ class MyScene extends CGFscene {
 
         //Objects connected to MyInterface
         //this.treeGroupPatch = new MyTreeGroupPatch(this);
-        this.treeRowPatch = new MyTreeRowPatch(this);
+      //  this.treeRowPatch = new MyTreeRowPatch(this);
+
+        //house display
+        this.house = new MyHouse(this, 1, 2 , 3, 4);
     }
     initLights() {
         this.lights[0].setPosition(10, 2, 5, 1);
@@ -67,7 +70,10 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         //this.treeGroupPatch.display();
-        this.treeRowPatch.display();
+       // this.treeRowPatch.display();
+
+        //house display
+        this.house.display();
         // ---- END Primitive drawing section
     }
 }

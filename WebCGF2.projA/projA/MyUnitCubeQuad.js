@@ -35,8 +35,9 @@ class MyUnitCubeQuad extends CGFobject {
         //quad1
         this.scene.pushMatrix();
 
-        this.scene.quadMaterial.setTexture(this.scene.textures[4])
-        this.scene.quadMaterial.apply();
+        //textures
+        //this.scene.quadMaterial.setTexture(this.scene.textures[4])
+        //this.scene.quadMaterial.apply();
 
         this.scene.rotate(Math.PI, 0, 0, 1);
         this.scene.rotate(-Math.PI, 1, 0, 0);
@@ -46,9 +47,9 @@ class MyUnitCubeQuad extends CGFobject {
 
         //quad2
         this.scene.pushMatrix();
-
+        /*
         this.scene.quadMaterial.setTexture(this.scene.textures[6])
-        this.scene.quadMaterial.apply();
+        this.scene.quadMaterial.apply();*/
 
         this.scene.translate(0, -0.5, 0.5);
         this.scene.rotate(Math.PI / 2, 1, 0, 0);
@@ -59,8 +60,8 @@ class MyUnitCubeQuad extends CGFobject {
         //quad3
         this.scene.pushMatrix();
 
-        this.scene.quadMaterial.setTexture(this.scene.textures[5])
-        this.scene.quadMaterial.apply();
+      /*  this.scene.quadMaterial.setTexture(this.scene.textures[5])
+        this.scene.quadMaterial.apply();*/
 
         this.scene.translate(0, 0.5, 0.5);
         this.scene.rotate(-Math.PI / 2, 1, 0, 0);
@@ -71,19 +72,17 @@ class MyUnitCubeQuad extends CGFobject {
         //quad4
         this.scene.pushMatrix();
 
-        this.scene.quadMaterial.setTexture(this.scene.textures[4])
-        this.scene.quadMaterial.apply();
-
+      /*
         this.scene.translate(0, 0, 1);
-        this.quad4.display();
+        this.quad4.display();*/
 
         this.scene.popMatrix();
 
         //quad5
         this.scene.pushMatrix();
 
-        this.scene.quadMaterial.setTexture(this.scene.textures[4])
-        this.scene.quadMaterial.apply();
+      /*  this.scene.quadMaterial.setTexture(this.scene.textures[4])
+        this.scene.quadMaterial.apply();*/
 
         this.scene.translate(-0.5, 0, 0.5);
         this.scene.rotate(-Math.PI / 2, 0, 1, 0);
@@ -94,15 +93,15 @@ class MyUnitCubeQuad extends CGFobject {
         //quad6
         this.scene.pushMatrix();
 
-        this.scene.quadMaterial.setTexture(this.scene.textures[4])
-        this.scene.quadMaterial.apply();
+      /*  this.scene.quadMaterial.setTexture(this.scene.textures[4])
+        this.scene.quadMaterial.apply();*/
 
         this.scene.translate(0.5, 0, 0.5);
         this.scene.rotate(Math.PI / 2, 0, 1, 0);
         this.quad6.display();
 
         this.scene.popMatrix();
-        this.scene.updateAppliedTexture();
+       // this.scene.updateAppliedTexture();
         
         // ---- END Primitive drawing section
     }
