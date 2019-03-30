@@ -27,6 +27,8 @@ class MyVoxelHill extends CGFobject {
 
         this.scene.pushMatrix();
 
+        this.scene.translate(0, this.levels - 0.5, -0.5);
+
         var index = 0;
 
         for (var n = 1; n <= this.levels; n++) {
