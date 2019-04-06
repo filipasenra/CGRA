@@ -3,75 +3,49 @@
  * @constructor
  * @param scene - Reference to MyScene object
  */
-
 class MyVoxelHill extends CGFobject {
+	constructor(scene, levels) {
 
-    constructor(scene, levels) {
-        super(scene);
-        this.levels = levels;
+		super(scene);
         this.init(scene);
-    }
-    init(scene) {
+        this.scene = scene;
+        this.levels = levels;
+        
+	}
+	init(scene) {
 
-        this.cubes = [];
+		this.cube = new MyUnitCubeQuad(scene);
+	}
 
-        for (var n = 1; n <= this.levels; n++) {
-            for (var i = 0; i < (this.levels + n) * (this.levels + n); i++) {
-                this.cubes.push(new MyUnitCubeQuad(scene));
-            }
-        }
-
-    }
-
-    display() {
+	display() {
 
         this.scene.pushMatrix();
 
-        this.scene.translate(0, this.levels - 0.5, -0.5);
+        this.scene.translate(0, 0.5, -0.5);
 
-        var index = 0;
+		for (var l= 0; l< this.levels; l++) {
 
-        for (var n = 1; n <= this.levels; n++) {
+            var nCubes = 1 + (this.levels - l- 1) * 2;
+            
+			for (var i = 0; i < nCubes; i++) {
 
-            var linhas = (2*n - 1);
-
-            console.log(linhas);
-
-            //linha a linha
-            //1-3-5
-            for(var i = 0; i < linhas; i++)
-            {
-                this.scene.pushMatrix();
-                
-                //posição da linha
-                this.scene.translate(i, 0, 0);
-                
-                for(var j = 0; j < linhas; j++)
-                {
+				for (var j = 0; j < nCubes; j++) {
 
                     this.scene.pushMatrix();
-
-                    this.scene.translate(0, 0, j);
-                    this.cubes[index].display();
-
-                    this.scene.popMatrix();
-
-                    index++;
-                }
-
-                this.scene.popMatrix();
-            }
-
-            this.scene.translate(-1, -1, -1);
+                    
+					this.scene.translate(nCubes / 2 - 0.5 - i, l, nCubes / 2 - 0.5 - j);
+                    this.cube.display();
+                    
+					this.scene.popMatrix();
+				}
+			}
         }
-
+        
         this.scene.popMatrix();
 
-        // ---- END Primitive drawing section
-    }
+	}
 
-    updateBuffers(complexity) {
-        // reinitialize buffers
-        this.initBuffers();
-    }
+
+	updateBuffers() { }
 }
+

@@ -12,7 +12,7 @@ class MyCubeMap extends CGFobject {
 
         this.cube = new MyUnitCube(scene);
 
-        this.scene.quadMaterial.setTexture(this.scene.texture1);
+        //this.scene.quadMaterial.setTexture(this.scene.texture1);
 
     }
 
@@ -27,7 +27,7 @@ class MyCubeMap extends CGFobject {
 
         this.scene.quadMaterial.apply();
 
-        this.scene.scale(60, 60, 60);
+        this.scene.scale(30, 30, 30);
 
         this.cube.display();
 
