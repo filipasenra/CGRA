@@ -12,8 +12,6 @@ class MyCubeMap extends CGFobject {
 
         this.cube = new MyUnitCube(scene);
 
-        //this.scene.quadMaterial.setTexture(this.scene.texture1);
-
     }
 
     updateBuffers(complexity) {

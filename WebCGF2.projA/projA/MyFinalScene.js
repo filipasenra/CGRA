@@ -21,10 +21,11 @@ class MyFinalScene extends CGFobject {
 
     display() {
 
+        //TREES
+
         this.scene.pushMatrix();
 
         this.scene.translate(-10, 0, -5);
-
         this.treeGroup1.display();
 
         this.scene.popMatrix();
@@ -32,15 +33,16 @@ class MyFinalScene extends CGFobject {
         this.scene.pushMatrix();
 
         this.scene.translate(5, 0, 5);
-
         this.treeGroup2.display();
 
         this.scene.popMatrix();
 
+        //======================================
+        //HILLS
+
         this.scene.pushMatrix();
 
         this.scene.translate(-10, 0, 10);
-
         this.hill.display();
 
         this.scene.popMatrix();
@@ -48,16 +50,22 @@ class MyFinalScene extends CGFobject {
         this.scene.pushMatrix();
 
         this.scene.translate(-10, 0, -10);
-
         this.hill2.display();
+
+        this.scene.popMatrix();
+
+        //=====================================
+
+        this.scene.pushMatrix();
+
+        this.scene.scale(2, 2, 2);
+        this.house.display();
 
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
 
         this.scene.scale(2, 2, 2);
-
-        this.house.display();
 
         this.scene.popMatrix();
 

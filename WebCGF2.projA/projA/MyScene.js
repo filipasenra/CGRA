@@ -77,8 +77,8 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
-        this.finalScene.display();
         this.cube.display();
+        this.finalScene.display();
         //this.voxelHill.display();
         //this.house.display();
         // ---- END Primitive drawing section
