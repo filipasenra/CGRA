@@ -33,7 +33,7 @@ class MyScene extends CGFscene {
         this.quadMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
         this.quadMaterial.setSpecular(0.1, 0.1, 0.1, 1);
         this.quadMaterial.setShininess(10.0);
-        this.quadMaterial.loadTexture('texturas/Fundo2.png');
+        this.quadMaterial.loadTexture('texturas/default.png');
         this.quadMaterial.setTextureWrap('REPEAT', 'REPEAT');
         
     }
