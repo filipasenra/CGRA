@@ -25,6 +25,7 @@ class MyScene extends CGFscene {
 
         //Objects connected to MyInterface
         this.cube = new MyCubeMap(this);
+        this.finalScene = new MyFinalScene(this);
 
 
         this.quadMaterial = new CGFappearance(this);
@@ -49,7 +50,7 @@ class MyScene extends CGFscene {
         this.lights[1].update();
     }
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
+        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 40, 40), vec3.fromValues(0, 0, 0));
     }
     setDefaultAppearance() {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -76,6 +77,7 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
+        this.finalScene.display();
         this.cube.display();
         //this.voxelHill.display();
         //this.house.display();
