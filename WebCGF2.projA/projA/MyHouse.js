@@ -27,35 +27,35 @@ class MyHouse extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.translate(0.75, -0.60, -0.75);
+        this.scene.translate(0.75, 0, -0.75);
         this.scene.scale(0.25, 1.15, 0.25);
         this.prism.display();
 
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.scene.translate(0.75, -0.60, 0.75);
+        this.scene.translate(0.75, 0, 0.75);
         this.scene.scale(0.25, 1.15, 0.25);
         this.prism1.display();
 
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.scene.translate(-0.75, -0.60, -0.75);
+        this.scene.translate(-0.75, 0, -0.75);
         this.scene.scale(0.25, 1.15, 0.25);
         this.prism2.display();
 
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.scene.translate(-0.75, -0.60, 0.75);
+        this.scene.translate(-0.75, 0, 0.75);
         this.scene.scale(0.25, 1.15, 0.25);
         this.prism3.display();
 
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.scene.translate(0, 0.5, 0);
+        this.scene.translate(0, 1.1, 0);
         this.scene.scale(1.5, 1.5, 1.5);
         this.scene.rotate(Math.PI / 4, 0, 1, 0);
 
@@ -64,7 +64,7 @@ class MyHouse extends CGFobject {
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.scene.translate(0, 0, -0.6);
+        this.scene.translate(0, 0.6, -0.6);
         this.scene.scale(1.15, 1.15, 1.15);
         
         this.cube.display();

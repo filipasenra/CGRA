@@ -14,6 +14,8 @@ class MyFinalScene extends CGFobject {
 
         this.treeGroup1 = new MyTreeGroupPatch(scene);
         this.treeGroup2 = new MyTreeGroupPatch(scene);
+        this.treeRow = new MyTreeRowPatch(scene);
+        this.treeRow2 = new MyTreeRowPatch(scene);
         this.hill = new MyVoxelHill(scene, 4);
         this.hill2 = new MyVoxelHill(scene, 3);
         this.house = new MyHouse(scene);
@@ -21,7 +23,7 @@ class MyFinalScene extends CGFobject {
 
     display() {
 
-        //TREES
+        //TREES GROUP
 
         this.scene.pushMatrix();
 
@@ -32,8 +34,26 @@ class MyFinalScene extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.translate(5, 0, 5);
+        this.scene.translate(8, 0, 5);
         this.treeGroup2.display();
+
+        this.scene.popMatrix();
+
+        //=====================================
+        //TRESS ROW
+
+        this.scene.pushMatrix();
+
+        this.scene.translate(6, 0, -10);
+        this.treeRow.display();
+
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+
+        this.scene.rotate(Math.PI/2.0, 0, 1, 0);
+        this.scene.translate(-7, 0, 6);
+        this.treeRow2.display();
 
         this.scene.popMatrix();
 
