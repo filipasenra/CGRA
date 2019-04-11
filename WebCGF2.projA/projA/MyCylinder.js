@@ -2,41 +2,46 @@
 * MyCylinder
 * @constructor
 */
+
 class MyCylinder extends CGFobject {
-    constructor(scene, slices, stacks) {
+    constructor(scene, slices) {
+
         super(scene);
         this.slices = slices;
-        this.stacks = stacks;
         this.initBuffers();
+
     }
+
     initBuffers() {
+
         this.vertices = [];
         this.indices = [];
         this.normals = [];
+        this.texCoords = [];
 
         var ang = 0;
         var alphaAng = 2 * Math.PI / this.slices;
-        var division = 1.0 / this.stacks;
 
-        //let's later understand how this works
-        for (let k = 0; k <= this.stacks; k++) {
-            for (let i = 0; i < this.slices; i++) {
+        for (var i = 0; i <= this.slices; i++) {
 
-                this.vertices.push(Math.cos(i * alphaAng),  k * division, -Math.sin(i * alphaAng));
-                this.normals.push(Math.cos(i * alphaAng), 0, -Math.sin(i * alphaAng));
+            var ca = Math.cos(ang);
+            var sa = Math.sin(ang);
 
-                if (k != 0 && i != 0) {
-                    this.indices.push(this.slices * k + i - 1, this.slices * (k - 1) + i - 1, this.slices * (k - 1) + i);
-                    this.indices.push(this.slices * k + i - 1, this.slices * (k - 1) + i, this.slices * k + i);
+            this.vertices.push(ca, 0, -sa);
+            this.vertices.push(ca, 1, -sa);
+            this.normals.push(ca, 0, -sa);
+            this.normals.push(ca, 0, -sa);
 
-                    if (i == (this.slices - 1)) {
-                        this.indices.push(this.slices * (k - 1) + i, this.slices * (k - 1), this.slices * k + i);
-                        this.indices.push(this.slices * k + i, this.slices * (k - 1), this.slices * k);
-                    }
-                }
+            if (i != this.slices) {
+                this.indices.push(2 * i + 1, 2 * i, 2 * i + 2);
+                this.indices.push(2 * i + 2, 2 * i + 3, 2 * i + 1);
             }
-        }
 
+            this.texCoords.push(i/(this.slices-1),1);
+			this.texCoords.push(i/(this.slices-1),0);
+
+            ang += 2 * Math.PI / this.slices;;
+        }
 
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();
@@ -50,5 +55,3 @@ class MyCylinder extends CGFobject {
         this.initNormalVizBuffers();
     }
 }
-
-
