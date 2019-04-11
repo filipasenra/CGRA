@@ -16,6 +16,9 @@ class MyInterface extends CGFinterface {
         
         var obj = this;
 
+        //CheckBox Display Textures
+        this.gui.add(this.scene, 'enableTexturesBool').name("Enable Textures");
+
         return true;
     }
 }

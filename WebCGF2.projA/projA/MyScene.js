@@ -18,7 +18,7 @@ class MyScene extends CGFscene {
         this.gl.enable(this.gl.DEPTH_TEST);
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
-        this.enableTextures(true);
+        this.enableTexturesBool = true;
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
@@ -27,14 +27,33 @@ class MyScene extends CGFscene {
         this.cube = new MyCubeMap(this);
         this.finalScene = new MyFinalScene(this);
 
-
         this.quadMaterial = new CGFappearance(this);
         this.quadMaterial.setAmbient(0.1, 0.1, 0.1, 1);
         this.quadMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
         this.quadMaterial.setSpecular(0.1, 0.1, 0.1, 1);
         this.quadMaterial.setShininess(10.0);
-        this.quadMaterial.loadTexture('texturas/default.png');
-        this.quadMaterial.setTextureWrap('REPEAT', 'REPEAT');
+        this.quadMaterial.loadTexture('texturas/Fundo3.png');
+        this.quadMaterial.setTextureWrap('MIRRORED_REPEAT', 'MIRRORED_REPEAT');
+
+        this.specularMaterial = new CGFappearance(this);
+        this.specularMaterial.setAmbient(1, 1, 1, 1);
+        this.specularMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.specularMaterial.setSpecular(1, 1, 1, 1);
+        this.specularMaterial.setShininess(20.0);
+        this.specularMaterial.loadTexture('texturas/fire.jpg');
+        this.specularMaterial.setTextureWrap('MIRRORED_REPEAT', 'MIRRORED_REPEAT');
+
+
+        this.texture1 = new CGFtexture(this, 'texturas/mineTop.png');
+        this.texture2 = new CGFtexture(this, 'texturas/Fundo3.png');
+        this.tronco = new CGFtexture(this, 'texturas/tronco.jpg');
+        this.folhas = new CGFtexture(this, 'texturas/folhas.jpg');
+        this.telhado = new CGFtexture(this, 'texturas/telhado.jpg');
+        this.postes = new CGFtexture(this, 'texturas/postes.jpeg');
+        this.paredes = new CGFtexture(this, 'texturas/paredes.jpg');
+        this.montanha = new CGFtexture(this, 'texturas/montanha1.jpg');
+        this.fire = new CGFtexture(this, 'texturas/fire.jpg');
+        this.dia = new CGFtexture(this, 'texturas/Dia.png');
         
     }
     initLights() {
@@ -76,9 +95,12 @@ class MyScene extends CGFscene {
         this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
+        
+        this.enableTextures(this.enableTexturesBool);
 
-        this.cube.display();
+        
         this.finalScene.display();
+        this.cube.display();
         //this.voxelHill.display();
         //this.house.display();
         // ---- END Primitive drawing section

@@ -23,6 +23,7 @@ class MyCubeMap extends CGFobject {
     display() {
         this.scene.pushMatrix();
 
+        this.scene.quadMaterial.setTexture(this.scene.dia);
         this.scene.quadMaterial.apply();
 
         this.scene.scale(30, 30, 30);
