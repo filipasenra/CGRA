@@ -38,16 +38,16 @@ class MyFinalScene extends CGFobject {
         this.scene.rotate(-Math.PI / 2.0, 1, 0, 0);
         this.scene.scale(30, 30, 30);
 
-        this.scene.quadMaterial.setTexture(this.scene.texture1);
-        this.scene.quadMaterial.apply();
+        this.scene.difuseMaterial.setTexture(this.scene.relva);
+        this.scene.difuseMaterial.apply();
         this.terreno.display();
 
         this.scene.popMatrix();
 
         //=====================================
 
-        this.scene.quadMaterial.setTexture(null);
-        this.scene.quadMaterial.apply();
+        this.scene.difuseMaterial.setTexture(null);
+        this.scene.difuseMaterial.apply();
 
         //TREES GROUP
 
@@ -89,8 +89,8 @@ class MyFinalScene extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.quadMaterial.setTexture(this.scene.montanha);
-        this.scene.quadMaterial.apply();
+        this.scene.difuseMaterial.setTexture(this.scene.montanha);
+        this.scene.difuseMaterial.apply();
 
         this.scene.translate(-10, 0, 10);
         this.hill.display();

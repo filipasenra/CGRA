@@ -18,6 +18,8 @@ class MyInterface extends CGFinterface {
 
         //CheckBox Display Textures
         this.gui.add(this.scene, 'enableTexturesBool').name("Enable Textures");
+        this.gui.add(this.scene, 'enableLights').name("Day");
+        this.gui.add(this.scene, 'scaleFactor', 0.5, 4.0).name('Scale');
 
         return true;
     }

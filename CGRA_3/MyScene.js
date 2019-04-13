@@ -46,6 +46,9 @@ class MyScene extends CGFscene {
         this.updateAmbientLight();
     }
     initLights() {
+
+        this.setGlobalAmbientLight(1, 1, 1, 1);
+        
         this.lights[0].setPosition(2.0, 2.0, -1.0, 1.0);
         this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
         this.lights[0].setSpecular(1.0, 1.0, 1.0, 1.0);

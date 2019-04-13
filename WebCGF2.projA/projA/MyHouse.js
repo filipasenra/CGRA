@@ -27,8 +27,8 @@ class MyHouse extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.quadMaterial.setTexture(this.scene.postes);
-        this.scene.quadMaterial.apply();
+        this.scene.difuseMaterial.setTexture(this.scene.postes);
+        this.scene.difuseMaterial.apply();
 
         this.scene.translate(0.75, 0, -0.75);
         this.scene.scale(0.25, 1.15, 0.25);
@@ -62,15 +62,15 @@ class MyHouse extends CGFobject {
         this.scene.scale(1.5, 1.5, 1.5);
         this.scene.rotate(Math.PI / 4, 0, 1, 0);
 
-        this.scene.quadMaterial.setTexture(this.scene.telhado);
-        this.scene.quadMaterial.apply();
+        this.scene.difuseMaterial.setTexture(this.scene.telhado);
+        this.scene.difuseMaterial.apply();
         this.pyramid.display();
 
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.scene.quadMaterial.setTexture(this.scene.paredes);
-        this.scene.quadMaterial.apply();
+        this.scene.difuseMaterial.setTexture(this.scene.paredes);
+        this.scene.difuseMaterial.apply();
 
         this.scene.translate(0, 0.6, -0.6);
         this.scene.scale(1.15, 1.15, 1.15);
@@ -79,8 +79,8 @@ class MyHouse extends CGFobject {
 
         this.scene.popMatrix();
 
-        this.scene.quadMaterial.setTexture(null);
-        this.scene.quadMaterial.apply();
+        this.scene.difuseMaterial.setTexture(null);
+        this.scene.difuseMaterial.apply();
 
 
         // ---- END Primitive drawing section
