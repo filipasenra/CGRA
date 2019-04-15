@@ -23,7 +23,7 @@ class MyCubeMap extends CGFobject {
     display() {
         this.scene.pushMatrix();
 
-        if (this.scene.enableLights)
+        if (this.scene.enableLights==0)
             this.scene.difuseMaterial.setTexture(this.scene.dia);
         else
             this.scene.difuseMaterial.setTexture(this.scene.noite);

@@ -105,7 +105,7 @@ class MyFinalScene extends CGFobject {
         this.scene.popMatrix();
 
         //=====================================
-
+        //FIREPIT
         this.scene.pushMatrix();
 
         this.scene.scale(2, 2, 2);

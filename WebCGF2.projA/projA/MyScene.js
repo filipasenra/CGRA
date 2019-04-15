@@ -19,7 +19,7 @@ class MyScene extends CGFscene {
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
         this.enableTexturesBool = true;
-        this.enableLights = true;
+        this.enableLights = 0;
         this.scaleFactor = 1.0;
 
         //Objects connected to MyInterface
@@ -55,6 +55,9 @@ class MyScene extends CGFscene {
         this.fire = new CGFtexture(this, 'texturas/fire.jpg');
         this.dia = new CGFtexture(this, 'texturas/Dia.png');
 
+        this.selectedDay = 0;
+        // Labels and ID's for object selection on MyInterface
+        this.objectIDs = { 'Day': 0 , 'Night': 1};
     }
     initLights() {
         this.lights[0].setPosition(10, 20, 10, 1);
@@ -106,7 +109,7 @@ class MyScene extends CGFscene {
         this.enableTextures(this.enableTexturesBool);
 
         //Enabling correct ligths
-        if (this.enableLights) {
+        if (this.enableLights==0) {
             this.lights[0].enable();
             this.lights[0].update();
 
@@ -115,7 +118,7 @@ class MyScene extends CGFscene {
 
             this.lights[2].disable();
             this.lights[2].update();
-        } else {
+        } else{
             this.lights[0].disable();
             this.lights[0].update();
 
