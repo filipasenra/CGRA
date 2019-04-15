@@ -25,6 +25,8 @@ class MyHouse extends CGFobject {
 
     display() {
 
+        //===================================
+        //PRISM 1
         this.scene.pushMatrix();
 
         this.scene.difuseMaterial.setTexture(this.scene.postes);
@@ -35,6 +37,8 @@ class MyHouse extends CGFobject {
         this.prism.display();
 
         this.scene.popMatrix();
+        
+        //PRISM 2
         this.scene.pushMatrix();
 
         this.scene.translate(0.75, 0, 0.75);
@@ -42,6 +46,8 @@ class MyHouse extends CGFobject {
         this.prism1.display();
 
         this.scene.popMatrix();
+
+        //PRISM 3
         this.scene.pushMatrix();
 
         this.scene.translate(-0.75, 0, -0.75);
@@ -49,6 +55,8 @@ class MyHouse extends CGFobject {
         this.prism2.display();
 
         this.scene.popMatrix();
+
+        //PRISM 4
         this.scene.pushMatrix();
 
         this.scene.translate(-0.75, 0, 0.75);
@@ -56,6 +64,9 @@ class MyHouse extends CGFobject {
         this.prism3.display();
 
         this.scene.popMatrix();
+
+        //===================================
+        //PYRAMID
         this.scene.pushMatrix();
 
         this.scene.translate(0, 1.1, 0);
@@ -67,6 +78,9 @@ class MyHouse extends CGFobject {
         this.pyramid.display();
 
         this.scene.popMatrix();
+
+        //===================================
+        //CUBE
         this.scene.pushMatrix();
 
         this.scene.difuseMaterial.setTexture(this.scene.paredes);
@@ -87,7 +101,7 @@ class MyHouse extends CGFobject {
     }
 
     updateBuffers(complexity) {
-        // reinitialize buffers
+        // Reinitialize buffers
         this.initBuffers();
     }
 }

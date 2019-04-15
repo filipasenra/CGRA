@@ -37,14 +37,14 @@ class MyPyramid extends CGFobject {
             this.vertices.push(caa, 0, -saa);
             this.texCoords.push(0.5 + caa*0.5, 0.5 - saa*0.5);
 
-            // triangle normal computed by cross product of two edges
+            // Triangle normal computed by cross product of two edges
             var normal = [
                 saa - sa,
                 ca * saa - sa * caa,
                 caa - ca
             ];
 
-            // normalization
+            // Normalization
             var nsize = Math.sqrt(
                 normal[0] * normal[0] +
                 normal[1] * normal[1] +
@@ -54,7 +54,7 @@ class MyPyramid extends CGFobject {
             normal[1] /= nsize;
             normal[2] /= nsize;
 
-            // push normal once for each vertex of this triangle
+            // Push normal once for each vertex of this triangle
             this.normals.push(...normal);
             this.normals.push(...normal);
             this.normals.push(...normal);
@@ -69,9 +69,9 @@ class MyPyramid extends CGFobject {
     }
 
     updateBuffers(complexity) {
-        this.slices = 3 + Math.round(9 * complexity); //complexity varies 0-1, so slices varies 3-12
+        this.slices = 3 + Math.round(9 * complexity); //Complexity varies 0-1, so slices varies 3-12
 
-        // reinitialize buffers
+        // Reinitialize buffers
         this.initBuffers();
         this.initNormalVizBuffers();
     }

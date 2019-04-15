@@ -20,7 +20,6 @@ class MyCylinder extends CGFobject {
         this.texCoords = [];
 
         var ang = 0;
-        var alphaAng = 2 * Math.PI / this.slices;
 
         for (var i = 0; i <= this.slices; i++) {
 
@@ -48,9 +47,9 @@ class MyCylinder extends CGFobject {
     }
 
     updateBuffers(complexity) {
-        this.slices = 3 + Math.round(9 * complexity); //complexity varies 0-1, so slices varies 3-12
+        this.slices = 3 + Math.round(9 * complexity); //Complexity varies 0-1, so slices varies 3-12
 
-        // reinitialize buffers
+        // Reinitialize buffers
         this.initBuffers();
         this.initNormalVizBuffers();
     }

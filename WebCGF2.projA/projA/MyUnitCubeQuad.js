@@ -12,6 +12,7 @@ class MyUnitCubeQuad extends CGFobject {
     }
     init(scene) {
 
+        //Initialization of quad objects
         this.quad1 = new MyQuad(scene);
         this.quad2 = new MyQuad(scene);
         this.quad3 = new MyQuad(scene);
@@ -32,7 +33,7 @@ class MyUnitCubeQuad extends CGFobject {
 
     display() {
 
-        //quad1
+        //Quad 1
         this.scene.pushMatrix();
 
         this.scene.rotate(Math.PI, 0, 0, 1);
@@ -41,7 +42,7 @@ class MyUnitCubeQuad extends CGFobject {
 
         this.scene.popMatrix();
 
-        //quad2
+        //Quad 2
         this.scene.pushMatrix();
 
         this.scene.translate(0, -0.5, 0.5);
@@ -50,7 +51,7 @@ class MyUnitCubeQuad extends CGFobject {
 
         this.scene.popMatrix();
 
-        //quad3
+        //Quad 3
         this.scene.pushMatrix();
 
         this.scene.translate(0, 0.5, 0.5);
@@ -59,7 +60,7 @@ class MyUnitCubeQuad extends CGFobject {
 
         this.scene.popMatrix();
 
-        //quad4
+        //Quad 4
         this.scene.pushMatrix();
       
         this.scene.translate(0, 0, 1);
@@ -67,7 +68,7 @@ class MyUnitCubeQuad extends CGFobject {
 
         this.scene.popMatrix();
 
-        //quad5
+        //Quad 5
         this.scene.pushMatrix();
 
         this.scene.translate(-0.5, 0, 0.5);
@@ -76,7 +77,7 @@ class MyUnitCubeQuad extends CGFobject {
 
         this.scene.popMatrix();
 
-        //quad6
+        //Quad 6
         this.scene.pushMatrix();
 
         this.scene.translate(0.5, 0, 0.5);
@@ -89,7 +90,7 @@ class MyUnitCubeQuad extends CGFobject {
     }
 
     updateBuffers(complexity) {
-        // reinitialize buffers
+        // Reinitialize buffers
         this.initBuffers();
         this.initNormalVizBuffers();
     }

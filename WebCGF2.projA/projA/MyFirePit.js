@@ -18,6 +18,9 @@ class MyFirePit extends CGFobject {
     }
 
     display() {
+
+        //===================================
+        //CONE
         this.scene.pushMatrix();
 
         this.scene.specularMaterial.setTexture(this.scene.fire);
@@ -29,6 +32,8 @@ class MyFirePit extends CGFobject {
 
         this.scene.popMatrix();
 
+        //===================================
+        //BASE
         this.scene.pushMatrix();
 
         this.scene.specularMaterial.setTexture(this.scene.paredes);
@@ -47,7 +52,7 @@ class MyFirePit extends CGFobject {
     }
 
     updateBuffers(complexity) {
-        // reinitialize buffers
+        // Reinitialize buffers
         this.initBuffers();
     }
 }

@@ -44,6 +44,7 @@ class MyScene extends CGFscene {
         this.specularMaterial.loadTexture('texturas/fire.jpg');
         this.specularMaterial.setTextureWrap('MIRRORED_REPEAT', 'MIRRORED_REPEAT');
 
+        //Objects initialization
         this.relva = new CGFtexture(this, 'texturas/mineTop.png');
         this.noite = new CGFtexture(this, 'texturas/Fundo3.png');
         this.tronco = new CGFtexture(this, 'texturas/tronco.jpg');
@@ -55,7 +56,7 @@ class MyScene extends CGFscene {
         this.fire = new CGFtexture(this, 'texturas/fire.jpg');
         this.dia = new CGFtexture(this, 'texturas/Dia.png');
 
-        this.selectedDay = 0;
+        
         // Labels and ID's for object selection on MyInterface
         this.objectIDs = { 'Day': 0 , 'Night': 1};
     }
@@ -129,7 +130,10 @@ class MyScene extends CGFscene {
             this.lights[2].update();
         }
 
+        //Scale section
         this.scale(this.scaleFactor,this.scaleFactor,this.scaleFactor);
+
+        //Display section
         this.finalScene.display();
         this.cube.display();
         

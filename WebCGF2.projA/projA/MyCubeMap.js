@@ -15,7 +15,7 @@ class MyCubeMap extends CGFobject {
     }
 
     updateBuffers(complexity) {
-        // reinitialize buffers
+        // Reinitialize buffers
         this.initBuffers();
         this.initNormalVizBuffers();
     }
@@ -23,6 +23,7 @@ class MyCubeMap extends CGFobject {
     display() {
         this.scene.pushMatrix();
 
+        //Defining if it is day or night 
         if (this.scene.enableLights==0)
             this.scene.difuseMaterial.setTexture(this.scene.dia);
         else

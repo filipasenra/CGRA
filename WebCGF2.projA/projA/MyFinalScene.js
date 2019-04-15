@@ -12,6 +12,7 @@ class MyFinalScene extends CGFobject {
     }
     init(scene) {
 
+        //Initializing objects of our final scene
         this.treeGroup1 = new MyTreeGroupPatch(scene);
         this.treeGroup2 = new MyTreeGroupPatch(scene);
         this.treeRow = new MyTreeRowPatch(scene);
@@ -31,6 +32,7 @@ class MyFinalScene extends CGFobject {
 
     display() {
 
+        //=====================================
         //TERRENO
 
         this.scene.pushMatrix();
@@ -49,7 +51,7 @@ class MyFinalScene extends CGFobject {
         this.scene.difuseMaterial.setTexture(null);
         this.scene.difuseMaterial.apply();
 
-        //TREES GROUP
+        //TREES GROUP 1
 
         this.scene.pushMatrix();
 
@@ -59,6 +61,7 @@ class MyFinalScene extends CGFobject {
 
         this.scene.popMatrix();
 
+        //TREE GROUP 2
         this.scene.pushMatrix();
 
         this.scene.translate(8, 0, 5);
@@ -67,7 +70,7 @@ class MyFinalScene extends CGFobject {
         this.scene.popMatrix();
 
         //=====================================
-        //TRESS ROW
+        //TREE ROW 1
 
         this.scene.pushMatrix();
 
@@ -76,6 +79,7 @@ class MyFinalScene extends CGFobject {
 
         this.scene.popMatrix();
 
+        //TREE ROW 2
         this.scene.pushMatrix();
 
         this.scene.rotate(Math.PI / 2.0, 0, 1, 0);
@@ -85,8 +89,8 @@ class MyFinalScene extends CGFobject {
         this.scene.popMatrix();
 
         //======================================
-        //HILLS
-
+        //HILL 1
+        
         this.scene.pushMatrix();
 
         this.scene.difuseMaterial.setTexture(this.scene.montanha);
@@ -97,6 +101,7 @@ class MyFinalScene extends CGFobject {
 
         this.scene.popMatrix();
 
+        //HILL 2
         this.scene.pushMatrix();
 
         this.scene.translate(-10, 0, -10);
@@ -123,7 +128,7 @@ class MyFinalScene extends CGFobject {
     }
 
     updateBuffers(complexity) {
-        // reinitialize buffers
+        // Reinitialize buffers
         this.initBuffers();
     }
 }

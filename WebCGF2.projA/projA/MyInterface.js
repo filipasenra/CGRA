@@ -8,13 +8,11 @@ class MyInterface extends CGFinterface {
     }
 
     init(application) {
-        // call CGFinterface init
+        // Call CGFinterface init
         super.init(application);
-        // init GUI. For more information on the methods, check:
+        // Init GUI. For more information on the methods, check:
         // http://workshop.chromeexperiments.com/examples/gui
         this.gui = new dat.GUI();
-        
-        var obj = this;
 
         //CheckBox Display Textures
         this.gui.add(this.scene, 'enableTexturesBool').name("Enable Textures");

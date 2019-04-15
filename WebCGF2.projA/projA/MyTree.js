@@ -23,6 +23,8 @@ class MyTree extends CGFobject {
 
     display() {
 
+        //===================================
+        //CYLINDER
         this.scene.pushMatrix();
 
         this.scene.scale(this.trunkRadius, this.trunkHeight, this.trunkRadius);
@@ -33,6 +35,8 @@ class MyTree extends CGFobject {
 
         this.scene.popMatrix();
 
+        //===================================
+        //CONE
         this.scene.pushMatrix();
 
         this.scene.difuseMaterial.setTexture(this.scene.folhas);
@@ -53,7 +57,7 @@ class MyTree extends CGFobject {
     }
 
     updateBuffers(complexity) {
-        // reinitialize buffers
+        // Reinitialize buffers
         this.initBuffers();
     }
 }

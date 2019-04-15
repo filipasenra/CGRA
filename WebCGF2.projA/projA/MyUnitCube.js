@@ -11,37 +11,37 @@ class MyUnitCube extends CGFobject {
     initBuffers() {
         this.vertices = [
 
-            //quadrado base
+            //Quadrado base
             0.5, 0.5, -0.5,	//0
             0.5, -0.5, -0.5,	//1
             -0.5, -0.5, -0.5,	//2
             -0.5, 0.5, -0.5,	//3
 
-            //quadrado topo
+            //Quadrado topo
             0.5, 0.5, 0.5,	//4
             0.5, -0.5, 0.5,	//5
             -0.5, -0.5, 0.5,	//6
             -0.5, 0.5, 0.5,		//7
             
-            // 3 plano
+            //3 Plano
             0.5, 0.5, -0.5,	//0
             0.5, -0.5, -0.5,	//1
             0.5, 0.5, 0.5,	//4
             0.5, -0.5, 0.5,	//5
 
-            //4 plano
+            //4 Plano
             -0.5, 0.5, -0.5,	//3
             -0.5, -0.5, -0.5,	//2
             -0.5, -0.5, 0.5,	//6
             -0.5, 0.5, 0.5,		//7
 
-            //5 plano
+            //5 Plano
             0.5, 0.5, 0.5,	//4
             0.5, 0.5, -0.5,	//0
             -0.5, 0.5, -0.5,	//3
             -0.5, 0.5, 0.5,		//7
 
-            //6 plano
+            //6 Plano
             0.5, -0.5, -0.5,	//1
             -0.5, -0.5, -0.5,	//2
             0.5, -0.5, 0.5,	//5
@@ -50,66 +50,66 @@ class MyUnitCube extends CGFobject {
         
         //Counter-clockwise reference of vertices
         this.indices = [
-            //quadrado eixo azul parte negativa
+            //Quadrado eixo azul parte negativa
             2, 1, 0, 
             0, 3, 2, 
 
-            //quadrado eixo azul parte positiva
+            //Quadrado eixo azul parte positiva
             4, 5, 6, 
             6, 7, 4, 
 
-            //quadrado eixo vermelho positivo
+            //Quadrado eixo vermelho positivo
             8, 9, 11,
             11, 10, 8, 
 
-            //quadrado eixo vermelho negativo
+            //Quadrado eixo vermelho negativo
             14, 13, 12, 
             12, 15, 14, 
 
-            //quadrado eixo verde positivo
+            //Quadrado eixo verde positivo
             18, 17, 16, 
             16, 19, 18,  
 
-            //quadrado eixo verde negativo
+            //Quadrado eixo verde negativo
             22, 20, 21, 
             21, 23, 22,
             
         ];
 
-        //vetores normais
+        //Vetores normais
         this.normals = [];
 
-        //1 plano
+        //1 Plano
         this.normals.push(0,0, 1);
         this.normals.push(0,0, 1);
         this.normals.push(0,0, 1);
         this.normals.push(0,0, 1);
         
-        //2 plano
+        //2 Plano
         this.normals.push(0, 0, -1);
         this.normals.push(0,0, -1);
         this.normals.push(0,0, -1);
         this.normals.push(0,0, -1);
 
-        //3 plano
+        //3 Plano
         this.normals.push(-1, 0, 0);
         this.normals.push(-1, 0, 0);
         this.normals.push(-1, 0, 0);
         this.normals.push(-1, 0, 0);
 
-        //4 plano
+        //4 Plano
         this.normals.push(1, 0, 0);
         this.normals.push(1, 0, 0);
         this.normals.push(1, 0, 0);
         this.normals.push(1, 0, 0);
 
-        //5 plano
+        //5 Plano
         this.normals.push(0, -1, 0);
         this.normals.push(0, -1, 0);
         this.normals.push(0, -1, 0);
         this.normals.push(0, -1, 0);
 
-        //6 plano
+        //6 Plano
         this.normals.push(0, 1, 0);
         this.normals.push(0, 1, 0);
         this.normals.push(0, 1, 0);
@@ -152,7 +152,7 @@ class MyUnitCube extends CGFobject {
     }
 
     updateBuffers(complexity){
-        // reinitialize buffers
+        // Reinitialize buffers
         this.initBuffers();
         this.initNormalVizBuffers();
     }

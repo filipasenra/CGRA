@@ -22,36 +22,49 @@ class MyTreeRowPatch extends CGFobject {
 
     display() {
 
+
+        //===================================
+        //TREE 1
         this.scene.pushMatrix();
 
         this.scene.translate(-1, 0, 1);
         this.tree1.display();
 
         this.scene.popMatrix();
+
+        //TREE 2
         this.scene.pushMatrix();
         
         this.scene.translate(-3.5, 0, 1.1);
         this.tree2.display();
 
         this.scene.popMatrix();
+
+        //TREE 3
         this.scene.pushMatrix();
         
         this.scene.translate(-5.5, 0, 0.9);
         this.tree3.display();
 
         this.scene.popMatrix();
+
+        //TREE 4
         this.scene.pushMatrix();
 
         this.scene.translate(1, 0, 1.1);
         this.tree4.display();
 
         this.scene.popMatrix();
+
+        //TREE 5
         this.scene.pushMatrix();
         
         this.scene.translate(3.4, 0, 1);
         this.tree5.display();
 
         this.scene.popMatrix();
+
+        //TREE 6
         this.scene.pushMatrix();
         
         this.scene.translate(5.7, 0, 0.9);
@@ -62,7 +75,7 @@ class MyTreeRowPatch extends CGFobject {
     }
 
     updateBuffers(complexity) {
-        // reinitialize buffers
+        // Reinitialize buffers
         this.initBuffers();
     }
 }

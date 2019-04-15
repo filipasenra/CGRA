@@ -9,6 +9,7 @@ class MyCone extends CGFobject {
         this.stacks = stacks;
         this.initBuffers();
     }
+    
     initBuffers() {
         this.vertices = [];
         this.indices = [];
@@ -37,9 +38,9 @@ class MyCone extends CGFobject {
     }
     
     updateBuffers(complexity){
-        this.slices = 3 + Math.round(9 * complexity); //complexity varies 0-1, so slices varies 3-12
+        this.slices = 3 + Math.round(9 * complexity); //Complexity varies 0-1, so slices varies 3-12
 
-        // reinitialize buffers
+        // Reinitialize buffers
         this.initBuffers();
         this.initNormalVizBuffers();
     }
