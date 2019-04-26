@@ -5,9 +5,9 @@ class ShaderScene extends CGFscene {
 		this.appearance = null;
 
 		// initial configuration of interface
-		this.selectedObject = 0;
+		this.selectedObject = 1;
 		this.wireframe = false;
-		this.selectedExampleShader = 0;
+		this.selectedExampleShader = 11;
 		this.showShaderCode = false;
 
 		this.scaleFactor = 16.0;
@@ -83,6 +83,7 @@ class ShaderScene extends CGFscene {
 		this.testShaders[6].setUniformsValues({ timeFactor: 0 });
 		this.testShaders[11].setUniformsValues({ uSampler3: 2 });
 		this.testShaders[11].setUniformsValues({ uSampler4: 3 });
+		this.testShaders[11].setUniformsValues({ timeFactor: 0 });
 
 
 		// Shaders interface variables
@@ -180,8 +181,8 @@ class ShaderScene extends CGFscene {
 	// called periodically (as per setUpdatePeriod() in init())
 	update(t) {
 		// only shader 6 is using time factor
-		if (this.selectedExampleShader == 6)
-			this.testShaders[6].setUniformsValues({ timeFactor: t / 100 % 1000 });
+		if (this.selectedExampleShader == 6 || this.selectedExampleShader == 11 )
+			this.testShaders[this.selectedExampleShader].setUniformsValues({ timeFactor: t / 100 % 1000 });
 	}
 
 	// main display function
@@ -217,8 +218,8 @@ class ShaderScene extends CGFscene {
 		this.texture4.bind(3);
 
 		//Uncomment following lines in case texture must have wrapping mode 'REPEAT'
-		//this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.REPEAT);
-		//this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this.gl.REPEAT);
+		this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.REPEAT);
+		this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this.gl.REPEAT);
 
 		if (this.selectedObject==0) {
 			// teapot (scaled and rotated to conform to our axis)

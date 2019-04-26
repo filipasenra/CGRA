@@ -11,15 +11,17 @@ uniform sampler2D uSampler4;
 
 uniform float normScale;
 
+uniform float timeFactor;
+
 void main() {
-	
-	vec3 offset=vec3(0.0,0.0,0.0);
 	
 	vTextureCoord = aTextureCoord;
 
-	if (texture2D(uSampler4, vec2(0.0,0.1)+vTextureCoord).b > 0.5)
-		offset=aVertexNormal*normScale*0.001;
+	vec4 filter = texture2D(uSampler4, vec2(timeFactor*0.02, timeFactor*0.02)+vTextureCoord);
 
-	gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition + offset, 1.0);
+	gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+
+	//Adding height to texture and exagerenting it
+	gl_Position.y += filter.b*6.5;
 }
 
