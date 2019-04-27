@@ -52,7 +52,7 @@ class ShaderScene extends CGFscene {
 		this.appearance.setShininess(120);
 
 		this.texture = new CGFtexture(this, "textures/texture.jpg");
-		this.appearance.setTexture(this.texture);
+		
 		this.appearance.setTextureWrap('REPEAT', 'REPEAT');
 
 		this.texture2 = new CGFtexture(this, "textures/FEUP.jpg");
@@ -156,6 +156,15 @@ class ShaderScene extends CGFscene {
 
 		// update scale factor
 		this.onScaleFactorChanged(this.scaleFactor);
+
+		
+		if (v == 11)
+		{
+			this.appearance.setTexture(this.texture3);
+		} else
+		{
+			this.appearance.setTexture(this.texture);
+		}
 	}
 
 	// called when a new object is selected

@@ -12,7 +12,7 @@ uniform float timeFactor;
 void main() {
 
 	//it is not working with vec2(timeFactor*0.02, timeFactor*0.02) (texture is not represented correctly)
-	vec4 color = texture2D(uSampler3, vTextureCoord);
+	vec4 color = texture2D(uSampler3, vec2(timeFactor*0.02, timeFactor*0.02) + vTextureCoord);
 	vec4 filter = texture2D(uSampler4, vec2(timeFactor*0.02, timeFactor*0.02)+ vTextureCoord);
 
 	//darking with height

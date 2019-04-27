@@ -21,19 +21,23 @@ class MyScene extends CGFscene {
         this.enableTextures(true);
 
         //Objects connected to MyInterface
-        this.axiom = "X"; this.ruleF = "FF"; 
+        this.axiom = "X"; 
+        this.ruleF = "FF"; 
         this.ruleX = "F[-X][X]F[-X]+FX"; 
         this.angle = 30.0; 
         this.iterations = 4; 
         this.scaleFactor = 0.5;
         this.lSystem = new MyLPlant(this);
 
+        /* Remember we need to escape de '\'*/
         this.doGenerate = function () {
             this.lSystem.generate(
                 this.axiom,
                 {
                     "F": [this.ruleF],
-                    "X": [this.ruleX]
+                    "X": [this.ruleX, "F[-X][X]+X", "F[+X]-X",
+                "F[/X][X]F[\\\\X]+X", "F[\\X][X]/X", "F[/X]\\X", 
+                "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X"]
                 },
                 this.angle,
                 this.iterations,
@@ -46,6 +50,23 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
+        
+        this.branchMaterial = new CGFappearance(this);
+        this.branchMaterial.setAmbient(0.3, 0.3, 0.3, 1);
+        this.branchMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.branchMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.branchMaterial.setShininess(10.0);
+        this.branchMaterial.loadTexture('texturas/tronco.jpg');
+        this.branchMaterial.setTextureWrap('MIRRORED_REPEAT', 'MIRRORED_REPEAT');
+
+        
+        this.leafMaterial = new CGFappearance(this);
+        this.leafMaterial.setAmbient(0.3, 0.3, 0.3, 1);
+        this.leafMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.leafMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.leafMaterial.setShininess(10.0);
+        this.leafMaterial.loadTexture('texturas/folhas.jpg');
+        this.leafMaterial.setTextureWrap('MIRRORED_REPEAT', 'MIRRORED_REPEAT');
 
     }
 
