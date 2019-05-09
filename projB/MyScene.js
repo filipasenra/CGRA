@@ -27,6 +27,7 @@ class MyScene extends CGFscene {
         this.plane = new Plane(this, 32);
         this.cubeMap = new MyCubeMap(this);
         this.house = new MyHouse(this);
+        this.bird = new MyBird(this);
 
         //Objects connected to MyInterface
     }
@@ -118,6 +119,9 @@ class MyScene extends CGFscene {
         this.house.display();
 
         this.popMatrix();
+
+        this.translate(0, 3, 0);
+        this.bird.display();
         // ---- END Primitive drawing section
     }
 }
