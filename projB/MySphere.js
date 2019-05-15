@@ -34,8 +34,6 @@ class MySphere extends CGFobject {
                 var y = Math.cos(phi);
                 var z = Math.sin(theta) * Math.sin(phi);
 
-                console.log(theta);
-
                 this.vertices.push(x, y, z);
                 this.normals.push(x, y, z);
                 //0.5 to look more natural

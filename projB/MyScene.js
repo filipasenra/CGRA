@@ -38,7 +38,7 @@ class MyScene extends CGFscene {
         this.lights[0].update();
     }
 
-    initTextures(){
+    initTextures() {
         //Difuse Material
         this.difuseMaterial = new CGFappearance(this);
         this.difuseMaterial.setAmbient(0.3, 0.3, 0.3, 1);
@@ -79,7 +79,8 @@ class MyScene extends CGFscene {
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.setShininess(10.0);
     }
-    update(t){
+    update(t) {
+        this.checkKeys();
 
     }
 
@@ -101,8 +102,11 @@ class MyScene extends CGFscene {
         this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
+
+        this.bird.updatePosition();
+
         this.pushMatrix();
-        this.rotate(-0.5*Math.PI, 1, 0, 0);
+        this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
         this.plane.display();
         this.popMatrix();
@@ -122,6 +126,31 @@ class MyScene extends CGFscene {
 
         this.translate(0, 3, 0);
         this.bird.display();
+
         // ---- END Primitive drawing section
+    }
+
+    checkKeys() {
+
+        // Check for key codes e.g. in ​https://keycode.info/
+        if (this.gui.isKeyPressed("KeyW")) {
+            this.bird.accelerate(0.2);
+        }
+
+        if (this.gui.isKeyPressed("KeyS")) {
+            this.bird.accelerate(0);
+        }
+
+        if (this.gui.isKeyPressed("KeyR")) {
+            this.bird.reset();
+        }
+
+        if (this.gui.isKeyPressed("KeyA")) {
+            this.bird.turn(10);
+        }
+
+        if (this.gui.isKeyPressed("KeyD")) {
+            this.bird.turn(-30);
+        }
     }
 }
