@@ -28,8 +28,21 @@ class MyScene extends CGFscene {
         this.cubeMap = new MyCubeMap(this);
         this.house = new MyHouse(this);
         this.bird = new MyBird(this);
+        this.terrain = new MyTerrain(this);
 
         //Objects connected to MyInterface
+
+
+
+        // shader code panels references
+        this.shadersDiv = document.getElementById("shaders");
+        this.vShaderDiv = document.getElementById("vshader");
+        this.fShaderDiv = document.getElementById("fshader");
+
+
+        // set the scene update period 
+        // (to invoke the update() method every 50ms or as close as possible to that )
+        this.setUpdatePeriod(50);
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -82,6 +95,8 @@ class MyScene extends CGFscene {
     update(t) {
         this.checkKeys();
 
+        this.bird.updatePosition(t);
+
     }
 
     display() {
@@ -103,13 +118,7 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
-        this.bird.updatePosition();
-
-        this.pushMatrix();
-        this.rotate(-0.5 * Math.PI, 1, 0, 0);
-        this.scale(60, 60, 1);
-        this.plane.display();
-        this.popMatrix();
+        this.terrain.display();
 
         this.pushMatrix();
         this.scale(60, 60, 60);

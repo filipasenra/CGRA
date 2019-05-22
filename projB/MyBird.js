@@ -16,8 +16,9 @@ class MyBird extends CGFobject {
         this.rotation = 0;
         this.velocity = 0;
         this.x = 0;
-        this.y = 0;
+        this.y = 3;
         this.z = 0;
+        this.degrees = 0;
 
         this.head_body = new MySphere(scene, 20, 20);
         this.beak = new MyCone(scene, 5, 5);
@@ -91,7 +92,7 @@ class MyBird extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.rotate(-Math.PI / 10, 0, 0, 1);
+        this.scene.rotate(-Math.PI / 10 + Math.sin(this.degrees), 0, 0, 1);
 
         this.scene.pushMatrix();
 
@@ -120,7 +121,7 @@ class MyBird extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.rotate(Math.PI / 10, 0, 0, 1);
+        this.scene.rotate(Math.PI / 10 - Math.sin(this.degrees), 0, 0, 1);
 
         this.scene.pushMatrix();
 
@@ -155,11 +156,16 @@ class MyBird extends CGFobject {
         this.initBuffers();
     }
 
-    updatePosition() {
+    updatePosition(v) {
+
+
+        this.degrees += Math.PI/6;
 
         if (this.velocity != 0) {
             this.x -= Math.sin(this.rotation) * this.velocity;
             this.z -= Math.cos(this.rotation) * this.velocity;
+        } else {
+            this.y = Math.sin(this.degrees) * 2;
         }
     }
 
@@ -174,7 +180,7 @@ class MyBird extends CGFobject {
 
     accelerate(v) {
 
-        this.velocity = v;
+        this.velocity += v;
     }
 
     reset() {
