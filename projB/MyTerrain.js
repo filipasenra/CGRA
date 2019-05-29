@@ -25,14 +25,17 @@ class MyTerrain extends CGFobject {
         this.appearance.loadTexture('images/terrain.jpg');
 
         this.texture = new CGFtexture(scene, "images/terrain.jpg");
-        this.texture2 = new CGFtexture(scene, "images/heightmap.jpg");
+        this.texture2 = new CGFtexture(scene, "images/heightmap_2.png");
+        this.texture3 = new CGFtexture(scene, "images/altimetry.png");
         this.appearance.setTextureWrap('REPEAT', 'REPEAT');
 
         this.shader = new CGFshader(this.scene.gl, "shaders/texture3.vert", "shaders/texture3.frag");
 
+        this.shader.setUniformsValues({new_color: 3});
         this.shader.setUniformsValues({ uSampler2: 2 });
 
         this.texture2.bind(2);
+        this.texture3.bind(3);
 
     }
 
@@ -44,6 +47,7 @@ class MyTerrain extends CGFobject {
 		// activate selected shaderda
         this.scene.setActiveShader(this.shader);
         this.texture2.bind(2);
+        this.texture3.bind(3);
         
         
         this.scene.pushMatrix();

@@ -29,6 +29,8 @@ class MyScene extends CGFscene {
         this.house = new MyHouse(this);
         this.bird = new MyBird(this);
         this.terrain = new MyTerrain(this);
+        this.branch = new MyTreeBranch(this);
+        this.nest = new MyNest(this);
 
         //Objects connected to MyInterface
 
@@ -135,6 +137,10 @@ class MyScene extends CGFscene {
 
         this.translate(0, 3, 0);
         this.bird.display();
+
+        this.branch.display();
+
+        this.nest.display();
 
         // ---- END Primitive drawing section
     }
