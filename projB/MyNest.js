@@ -22,8 +22,6 @@ class MyNest extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.scale(0.7,0.7,0.7);
-
         this.branch.display();
         this.scene.rotate(Math.PI/2, 0, 1, 0);
 

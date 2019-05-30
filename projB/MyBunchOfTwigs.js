@@ -23,7 +23,7 @@ class MyBunchOfTwigs extends CGFobject {
         for (var i = 0; i < 40; i++) {
 
             this.array[i] =  Math.PI / (Math.random() % 6 + 1);
-            this.array_translate[i] =  (Math.random() % 6 + 1);
+            this.array_translate[i] =  (Math.random() % 3 + 1);
 
         }
 

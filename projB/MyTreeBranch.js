@@ -32,8 +32,9 @@ class MyTreeBranch extends CGFobject {
 
         this.scene.pushMatrix();
 
+
+        this.scene.scale(0.7,0.7,0.7);
         this.scene.scale(0.2, 0.2, 4);
-        //this.scene.rotate(Math.PI/2, 1, 1 , 0);
 
         this.cylinder.display();
 
