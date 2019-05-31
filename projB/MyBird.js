@@ -5,6 +5,10 @@
  * @param scene - Reference to MyScene object
  */
 
+ const STANDARD_HEIGHT = 10;
+ const BIRD_X = 1.5;
+ const BIRD_Y = 3;
+
 class MyBird extends CGFobject {
 
     constructor(scene) {
@@ -16,7 +20,7 @@ class MyBird extends CGFobject {
         this.rotation = 0;
         this.velocity = 0;
         this.x = 0;
-        this.y = 3;
+        this.y = STANDARD_HEIGHT;
         this.z = 0;
         this.degrees = 0;
 
@@ -26,6 +30,11 @@ class MyBird extends CGFobject {
         this.wingBase = new Plane(scene, 10);
         this.wingTip = new MyTriangle(scene);
 
+        this.branch = null;
+
+        this.descend = false;
+        this.ascend = false;
+
         // ---- END Primitive drawing section
     }
 
@@ -33,7 +42,8 @@ class MyBird extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.translate(this.x, this.y, this.z);
+        this.scene.translate(this.x, this.y, this.z - 1);
+
         this.scene.rotate(this.rotation, 0, 1, 0);
 
         this.scene.pushMatrix();
@@ -148,7 +158,17 @@ class MyBird extends CGFobject {
 
         this.scene.popMatrix();
 
-        this.scene.popMatrix();
+        this.scene.popMatrix();;
+
+        if(this.branch != null){
+            this.scene.pushMatrix();
+
+            this.branch.setCoordinates(this.x, this.y - 1.2, this.z);
+            this.branch.setRotation(this.rotation);
+            this.branch.display();
+
+            this.scene.popMatrix();
+        }
     }
 
     updateBuffers(complexity) {
@@ -158,24 +178,40 @@ class MyBird extends CGFobject {
 
     updatePosition(v) {
 
-
         this.degrees += Math.PI/6;
+
+        if(this.descend == true){
+            this.y -= 0.2;
+
+
+           if( this.y < 0){
+                this.descend = false;
+                this.ascend = true;
+            }
+
+            return;
+        }
+
+        if(this.ascend){
+            this.y += 0.2;
+
+            if(this.y > 10){
+                this.ascend = false;
+            }
+
+            return;
+        }
 
         if (this.velocity != 0) {
             this.x -= Math.sin(this.rotation) * this.velocity;
             this.z -= Math.cos(this.rotation) * this.velocity;
         } else {
-            this.y = Math.sin(this.degrees) * 2;
+            this.y = Math.sin(this.degrees) * 2 + STANDARD_HEIGHT;
         }
     }
 
     turn(v) {
         this.rotation += v;
-
-        /*if (this.rotation > 360)
-            this.rotation -= 360;
-        else if (this.rotation < 0)
-            this.rotation += 360;*/
     }
 
     accelerate(v) {
@@ -187,7 +223,66 @@ class MyBird extends CGFobject {
         this.rotation = 0;
         this.velocity = 0;
         this.x = 0;
-        this.y = 0;
+        this.y = STANDARD_HEIGHT;
         this.z = 0;
+    }
+
+    addBranch(branch){
+
+        if(this.branch == null){
+            this.branch = branch;
+        }
+    }
+
+    hasBranch(){
+
+        return this.branch != null;
+    }
+
+    removeBranch(){
+
+        var branch_tmp = this.branch;
+        this.branch = null;
+
+        return branch_tmp;
+    }
+
+    getBranch(){
+        return this.branch;
+    }
+
+    startDescend(){
+
+        if(this.descend == false && this.ascend == false){
+            this.descend = true;
+        }
+
+    }
+
+    checkCollision(object)  {
+
+        if(object.getX() > (this.x + BIRD_X) || object.getX() < (this.x - BIRD_X))
+            return false;
+
+        if(object.getZ() > (this.z + BIRD_Y) || object.getZ() < (this.z - BIRD_Y))
+            return false;
+
+        if(this.y < 1 && this.y > 0)
+            return true;
+
+        return false;
+
+    }
+
+    getX(){
+        return this.x;
+    }
+
+    getY(){
+        return this.y;
+    }
+
+    getZ(){
+        return this.z;
     }
 }

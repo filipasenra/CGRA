@@ -22,8 +22,8 @@ class MyBunchOfTwigs extends CGFobject {
 
         for (var i = 0; i < 40; i++) {
 
-            this.array[i] =  Math.PI / (Math.random() % 6 + 1);
-            this.array_translate[i] =  (Math.random() % 3 + 1);
+            this.array[i] =  Math.PI / (Math.random() % 10 + 1);
+            this.array_translate[i] =  (Math.random() % 0.8 + 0.5);
 
         }
 
@@ -32,12 +32,12 @@ class MyBunchOfTwigs extends CGFobject {
     display() {
 
 
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 20; i++) {
 
             this.scene.pushMatrix()
 
-            this.scene.translate(this.array_translate[i], 2, this.array_translate[i]);
-            this.scene.rotate(this.array[i], 0, 1, 0);
+            this.scene.translate(this.array_translate[i], 0, this.array_translate[i]);
+            this.scene.rotate(-this.array[i], 0, 1, 0);
             this.scene.rotate(this.array[19-i]*0.1, 1, 0, 1);
             this.branch.display();
 

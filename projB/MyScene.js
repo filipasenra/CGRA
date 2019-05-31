@@ -29,12 +29,13 @@ class MyScene extends CGFscene {
         this.house = new MyHouse(this);
         this.bird = new MyBird(this);
         this.terrain = new MyTerrain(this);
-        this.branch = new MyTreeBranch(this);
         this.nest = new MyNest(this);
+
+        this.branchs = [];
 
         //Objects connected to MyInterface
 
-
+        this.branchs.push(new MyTreeBranch(this));
 
         // shader code panels references
         this.shadersDiv = document.getElementById("shaders");
@@ -99,6 +100,22 @@ class MyScene extends CGFscene {
 
         this.bird.updatePosition(t);
 
+        for (var i = 0; i < this.branchs.length; i++) {
+
+            if (this.bird.checkCollision(this.branchs[i])) {
+                this.bird.addBranch(this.branchs[i]);
+                this.branchs.splice(i, i + 1);
+                i--;
+                break;
+            }
+        }
+
+        if (this.bird.hasBranch()) {
+            if (this.nest.checkCollision(this.bird.branch) == true) {
+                this.nest.addBranch(this.bird.removeBranch());
+            }
+        }
+
     }
 
     display() {
@@ -144,12 +161,14 @@ class MyScene extends CGFscene {
 
         this.pushMatrix();
 
-        this.branch.display();
-
-        this.translate(3, 0, 0);
         this.nest.display();
 
         this.popMatrix();
+
+        for (var i = 0; i < this.branchs.length; i++) {
+
+            this.branchs[i].display();
+        }
 
         // ---- END Primitive drawing section
     }
@@ -175,6 +194,10 @@ class MyScene extends CGFscene {
 
         if (this.gui.isKeyPressed("KeyD")) {
             this.bird.turn(-30);
+        }
+
+        if (this.gui.isKeyPressed("KeyP")) {
+            this.bird.startDescend();
         }
     }
 }
