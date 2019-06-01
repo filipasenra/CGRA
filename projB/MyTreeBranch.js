@@ -29,10 +29,13 @@ class MyTreeBranch extends CGFobject {
         this.appearance.setShininess(120);
         this.appearance.loadTexture('texturas/tronco.jpg');
 
+        this.wood = new CGFtexture(this.scene, 'texturas/tronco.jpg')
+
     }
 
     display(){
 
+        this.appearance.setTexture(this.wood);
         this.appearance.apply();
 
         this.scene.pushMatrix();
@@ -46,6 +49,9 @@ class MyTreeBranch extends CGFobject {
         this.cylinder.display();
 
         this.scene.popMatrix();
+
+        this.appearance.setTexture(null);
+        this.appearance.apply();
     }
 
     setCoordinates(x, y, z){
