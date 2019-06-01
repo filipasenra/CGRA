@@ -30,12 +30,42 @@ class MyScene extends CGFscene {
         this.bird = new MyBird(this);
         this.terrain = new MyTerrain(this);
         this.nest = new MyNest(this);
+        this.active=0;
 
         this.branchs = [];
 
         //Objects connected to MyInterface
+        
+        this.lightning = new MyLightning(this);
 
         this.branchs.push(new MyTreeBranch(this));
+
+        this.axiom = "X"; 
+        this.ruleF = "FF"; 
+        this.ruleX = "F[-X][X]F[-X]+FX"; 
+        this.angle = 25.0; 
+        this.iterations = 3; 
+        this.scaleFactor = 0.5;
+        this.lSystem = new MyLSystem(this);
+
+        /* Remember we need to escape de '\'*/
+        this.doGenerate = function () {
+        this.lSystem.generate(
+        this.axiom,
+        {
+            "F": [this.ruleF],
+            "X": [this.ruleX, "F[-X][X]+X", "F[+X]-X",
+        "F[/X][X]F[\\\\X]+X", "F[\\X][X]/X", "F[/X]\\X", 
+        "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X"]
+        },
+        this.angle,
+        this.iterations,
+        this.scaleFactor
+        );
+        }
+
+         // do initial generation
+         this.doGenerate();
 
         // shader code panels references
         this.shadersDiv = document.getElementById("shaders");
@@ -46,6 +76,7 @@ class MyScene extends CGFscene {
         // set the scene update period 
         // (to invoke the update() method every 50ms or as close as possible to that )
         this.setUpdatePeriod(50);
+        this.lightning.startAnimation(1);
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -158,6 +189,16 @@ class MyScene extends CGFscene {
         this.bird.display();
 
         this.popMatrix();
+        
+        if(this.active == 1)
+        {
+        this.pushMatrix();
+
+
+        this.lightning.display();
+
+        this.popMatrix();
+        }
 
         this.pushMatrix();
 
@@ -169,6 +210,7 @@ class MyScene extends CGFscene {
 
             this.branchs[i].display();
         }
+       
 
         // ---- END Primitive drawing section
     }
@@ -198,6 +240,11 @@ class MyScene extends CGFscene {
 
         if (this.gui.isKeyPressed("KeyP")) {
             this.bird.startDescend();
+        }
+
+        if(this.gui.isKeyPressed("KeyL"))
+        {
+            this.active = 1;
         }
     }
 }
