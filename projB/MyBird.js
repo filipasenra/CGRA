@@ -5,7 +5,7 @@
  * @param scene - Reference to MyScene object
  */
 
- const STANDARD_HEIGHT = 10;
+ const STANDARD_HEIGHT = 13;
  const BIRD_X = 1.5;
  const BIRD_Y = 3;
 
@@ -21,7 +21,7 @@ class MyBird extends CGFobject {
         this.velocity = 0;
         this.x = 0;
         this.y = STANDARD_HEIGHT;
-        this.z = 0;
+        this.z = -2;
         this.degrees = 0;
 
         this.head_body = new MySphere(scene, 20, 20);
@@ -42,7 +42,7 @@ class MyBird extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.translate(this.x, this.y, this.z - 1);
+        this.scene.translate(this.x, this.y, this.z);
 
         this.scene.rotate(this.rotation, 0, 1, 0);
 
@@ -224,7 +224,7 @@ class MyBird extends CGFobject {
         this.velocity = 0;
         this.x = 0;
         this.y = STANDARD_HEIGHT;
-        this.z = 0;
+        this.z = -2;
     }
 
     addBranch(branch){
