@@ -21,7 +21,7 @@ class MyBird extends CGFobject {
         this.velocity = 0;
         this.x = 0;
         this.y = STANDARD_HEIGHT;
-        this.z = -2;
+        this.z = 0;
         this.degrees = 0;
 
         this.head_body = new MySphere(scene, 20, 20);
@@ -45,6 +45,8 @@ class MyBird extends CGFobject {
         this.scene.translate(this.x, this.y, this.z);
 
         this.scene.rotate(this.rotation, 0, 1, 0);
+
+        this.scene.translate(0, 0, -1);
 
         this.scene.pushMatrix();
 
@@ -224,7 +226,7 @@ class MyBird extends CGFobject {
         this.velocity = 0;
         this.x = 0;
         this.y = STANDARD_HEIGHT;
-        this.z = -2;
+        this.z = 0;
     }
 
     addBranch(branch){
