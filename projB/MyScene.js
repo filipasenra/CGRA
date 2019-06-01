@@ -194,8 +194,8 @@ class MyScene extends CGFscene {
         {
         this.pushMatrix();
 
-
-        this.lightning.display();
+            this.lSystem.display();
+        //this.lightning.display();
 
         this.popMatrix();
         }
