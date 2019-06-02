@@ -245,7 +245,7 @@ class MyBird extends CGFobject {
             this.x -= Math.sin(this.rotation) * this.velocity;
             this.z -= Math.cos(this.rotation) * this.velocity;
         } else {
-            this.y = Math.sin(this.degrees) * 2 + STANDARD_HEIGHT;
+            this.y = Math.sin(v/(1000/(2*Math.PI))) + STANDARD_HEIGHT;
         }
     }
 

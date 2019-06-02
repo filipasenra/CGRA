@@ -38,11 +38,11 @@ class MyScene extends CGFscene {
 
         for(var i=20; i>0 ; i--)
        { 
-           console.log("---------------------")
+          // console.log("---------------------")
         this.treePosY.push(Math.floor((Math.random() * 16) + 1));   
-        console.log(this.treePosY[i]);
+        //console.log(this.treePosY[i]);
         this.treePosX.push(Math.floor((Math.random() * 16) + 1));
-        console.log(this.treePosX[i]);
+       // console.log(this.treePosX[i]);
        }
         //Objects connected to MyInterface
 
@@ -260,13 +260,13 @@ class MyScene extends CGFscene {
 
         this.pushMatrix();
         for (var i=8; i>0 ;i--)
-        {  console.log("=======================");
+        {  //console.log("=======================");
             this.translate(-this.treePosY[i+1],0,-this.treePosX[i+1]);
-            console.log(-this.treePosY[i+1]);
-            console.log(-this.treePosX[i+1]);
+            //console.log(-this.treePosY[i+1]);
+            //console.log(-this.treePosX[i+1]);
             this.translate(this.treePosY[i],0,this.treePosX[i]);
-            console.log(this.treePosY[i]);
-            console.log(this.treePosX[i]);
+            //console.log(this.treePosY[i]);
+            //console.log(this.treePosX[i]);
             //this.scale(1.25,1.25,1.25)
             this.lPlant.display();
         }
