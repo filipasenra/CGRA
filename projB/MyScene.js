@@ -202,6 +202,10 @@ class MyScene extends CGFscene {
         this.terrain.display();
 
         this.pushMatrix();
+
+        this.translate(0, 4.5, 0);
+
+        this.pushMatrix();
         this.scale(60, 60, 60);
         this.cubeMap.display();
         this.popMatrix();
@@ -253,6 +257,8 @@ class MyScene extends CGFscene {
         this.translate(13, 20, 3);
         this.rotate(Math.PI, 0, 0, 1);
         this.lSystem.display();
+
+        this.popMatrix();
 
         this.popMatrix();
 

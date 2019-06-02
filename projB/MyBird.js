@@ -215,9 +215,7 @@ class MyBird extends CGFobject {
         this.initBuffers();
     }
 
-    updatePosition(v) {
-
-        this.degrees = Math.sin(v / (1000 / (2 * Math.PI)));
+    updateDownMovement(v){
 
         if (this.descend == true) {
 
@@ -226,8 +224,6 @@ class MyBird extends CGFobject {
             }
 
             this.y = STANDARD_HEIGHT - DESCENT_VALUE * (v - this.initDescent);
-
-            console.log(v - this.initDescent)
 
             if (this.y < 1) {
                 this.descend = false;
@@ -241,6 +237,14 @@ class MyBird extends CGFobject {
                 this.initDescent = 0;
             }
         }
+
+    }
+
+    updatePosition(v) {
+
+        this.updateDownMovement(v);
+
+        this.degrees = Math.sin(v / (1000 / (2 * Math.PI)));
 
         if (this.velocity != 0 || this.descend || this.ascend) {
             this.x -= Math.sin(this.rotation) * this.velocity;
