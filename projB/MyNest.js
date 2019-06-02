@@ -67,7 +67,7 @@ class MyNest extends CGFobject {
         if(object.getZ() > (this.z + NEST_Y) || object.getZ() < (this.z - NEST_Y))
             return false;
 
-        if(object.getY() < 1)
+        if(object.y < 1.5 && object.y > 1)
             return true;
 
         return false;

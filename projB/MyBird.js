@@ -249,6 +249,7 @@ class MyBird extends CGFobject {
         if (this.velocity != 0 || this.descend || this.ascend) {
             this.x -= Math.sin(this.rotation) * this.velocity;
             this.z -= Math.cos(this.rotation) * this.velocity;
+            this.y = this.degrees*0.4 + STANDARD_HEIGHT;
         } else {
             this.y = this.degrees + STANDARD_HEIGHT;
         }
