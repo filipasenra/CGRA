@@ -51,14 +51,6 @@ class MyScene extends CGFscene {
         // (to invoke the update() method every 50ms or as close as possible to that )
         this.setUpdatePeriod(50);
 
-        this.branchMaterial = new CGFappearance(this);
-        this.branchMaterial.setAmbient(0.3, 0.3, 0.3, 1);
-        this.branchMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.branchMaterial.setSpecular(0.1, 0.1, 0.1, 1);
-        this.branchMaterial.setShininess(10.0);
-        this.branchMaterial.loadTexture('texturas/tronco.jpg');
-        this.branchMaterial.setTextureWrap('MIRRORED_REPEAT', 'MIRRORED_REPEAT');
-
         this.speedFactor = 1;
         this.scaleFactor1 = 1;
 
@@ -115,28 +107,14 @@ class MyScene extends CGFscene {
         this.difuseMaterial.loadTexture('texturas/Fundo3.png');
         this.difuseMaterial.setTextureWrap('MIRRORED_REPEAT', 'MIRRORED_REPEAT');
 
-        //Specular Material
-        this.specularMaterial = new CGFappearance(this);
-        this.specularMaterial.setAmbient(0.9, 0.9, 0.9, 1);
-        this.specularMaterial.setDiffuse(0.1, 0.1, 0.1, 1);
-        this.specularMaterial.setSpecular(1, 1, 1, 1);
-        this.specularMaterial.setShininess(10.0);
-        this.specularMaterial.loadTexture('texturas/fire.jpg');
-        this.specularMaterial.setTextureWrap('MIRRORED_REPEAT', 'MIRRORED_REPEAT');
-
         //Objects initialization
-        this.relva = new CGFtexture(this, 'texturas/mineTop.png');
         this.noite = new CGFtexture(this, 'texturas/Fundo3.png');
-        this.tronco = new CGFtexture(this, 'texturas/tronco.jpg');
-        this.folhas = new CGFtexture(this, 'texturas/folhas.jpg');
         this.telhado = new CGFtexture(this, 'texturas/telhado.jpg');
         this.postes = new CGFtexture(this, 'texturas/postes.jpeg');
         this.paredes = new CGFtexture(this, 'texturas/paredes.jpg');
-        this.montanha = new CGFtexture(this, 'texturas/montanha1.jpg');
-        this.fire = new CGFtexture(this, 'texturas/fire.jpg');
         this.dia = new CGFtexture(this, 'texturas/Dia.png');
-        this.penas = new CGFtexture(this, 'texturas/penas.jpg')
-        this.penasPretas = new CGFtexture(this, 'texturas/black_feathers.jpg')
+        this.penas = new CGFtexture(this, 'texturas/penas.jpg');
+        this.penasPretas = new CGFtexture(this, 'texturas/black_feathers.jpg');
     }
 
     initCameras() {
