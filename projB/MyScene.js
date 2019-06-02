@@ -171,7 +171,6 @@ class MyScene extends CGFscene {
         this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
-        this.scale(this.scaleFactor1,this.scaleFactor1,this.scaleFactor1);
         this.terrain.display();
 
         this.pushMatrix();

@@ -61,6 +61,7 @@ class MyBird extends CGFobject {
         this.scene.rotate(this.rotation, 0, 1, 0);
 
         this.scene.scale(0.5, 0.5, 0.5);
+        this.scene.scale(this.scene.scaleFactor1,this.scene.scaleFactor1,this.scene.scaleFactor1);
 
         this.scene.pushMatrix();
 
