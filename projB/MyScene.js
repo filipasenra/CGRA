@@ -23,7 +23,6 @@ class MyScene extends CGFscene {
         this.setUpdatePeriod(50);
 
         //Initialize scene objects
-        this.axis = new CGFaxis(this);
         this.plane = new Plane(this, 32);
         this.cubeMap = new MyCubeMap(this);
         this.house = new MyHouse(this);
@@ -190,9 +189,6 @@ class MyScene extends CGFscene {
         this.loadIdentity();
         // Apply transformations corresponding to the camera position relative to the origin
         this.applyViewMatrix();
-
-        // Draw axis
-        this.axis.display();
 
         //Apply default appearance
         this.setDefaultAppearance();

@@ -229,6 +229,7 @@ class MyBird extends CGFobject {
                 this.descend = false;
                 this.ascend = true;
             }
+
         } else if (this.ascend) {
             this.y = DESCENT_VALUE * (v - this.initDescent) - STANDARD_HEIGHT;
 
@@ -236,20 +237,23 @@ class MyBird extends CGFobject {
                 this.ascend = false;
                 this.initDescent = 0;
             }
+
         }
 
     }
 
     updatePosition(v) {
 
-        this.updateDownMovement(v);
+        if (this.updateDownMovement(v));
 
         this.degrees = Math.sin(v / (1000 / (2 * Math.PI)));
 
         if (this.velocity != 0 || this.descend || this.ascend) {
             this.x -= Math.sin(this.rotation) * this.velocity;
             this.z -= Math.cos(this.rotation) * this.velocity;
-            this.y = this.degrees*0.4 + STANDARD_HEIGHT;
+            
+            if(!this.descend && !this.ascend)
+                this.y = this.degrees*0.4 + STANDARD_HEIGHT;
         } else {
             this.y = this.degrees + STANDARD_HEIGHT;
         }
