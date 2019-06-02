@@ -30,42 +30,69 @@ class MyScene extends CGFscene {
         this.bird = new MyBird(this);
         this.terrain = new MyTerrain(this);
         this.nest = new MyNest(this);
-        this.active=0;
+        this.active = 0;
 
         this.branchs = [];
+        this.treePosX =[];
+        this.treePosY =[];
 
+        for(var i=20; i>0 ; i--)
+       { 
+           console.log("---------------------")
+        this.treePosY.push(Math.floor((Math.random() * 16) + 1));   
+        console.log(this.treePosY[i]);
+        this.treePosX.push(Math.floor((Math.random() * 16) + 1));
+        console.log(this.treePosX[i]);
+       }
         //Objects connected to MyInterface
-        
-        this.lightning = new MyLightning(this);
 
         this.branchs.push(new MyTreeBranch(this));
 
-        this.axiom = "X"; 
-        this.ruleF = "FF"; 
-        this.ruleX = "F[-X][X]F[-X]+FX"; 
-        this.angle = 25.0; 
-        this.iterations = 3; 
+        this.axiom = "X";
+        this.ruleF = "FF";
+        this.ruleX = "F[-X][X]F[-X]+FX";
+        this.angle = 25.0;
+        this.iterations = 3;
         this.scaleFactor = 0.5;
-        this.lSystem = new MyLSystem(this);
+        this.lSystem = new MyLightning(this);
+        this.lPlant = new MyLPlant(this);
 
         /* Remember we need to escape de '\'*/
         this.doGenerate = function () {
-        this.lSystem.generate(
-        this.axiom,
-        {
-            "F": [this.ruleF],
-            "X": [this.ruleX, "F[-X][X]+X", "F[+X]-X",
-        "F[/X][X]F[\\\\X]+X", "F[\\X][X]/X", "F[/X]\\X", 
-        "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X"]
-        },
-        this.angle,
-        this.iterations,
-        this.scaleFactor
-        );
+            this.lSystem.generate(
+                this.axiom,
+                {
+                    "F": [this.ruleF],
+                    "X": [this.ruleX, "F[-X][X]+X", "F[+X]-X",
+                        "F[/X][X]F[\\\\X]+X", "F[\\X][X]/X", "F[/X]\\X",
+                        "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X"]
+                },
+                this.angle,
+                this.iterations,
+                this.scaleFactor
+            );
         }
 
-         // do initial generation
-         this.doGenerate();
+        // do initial generation
+        this.doGenerate();
+
+         /* Remember we need to escape de '\'*/
+         this.doGenerate = function () {
+            this.lPlant.generate(
+                this.axiom,
+                {
+                    "F": [this.ruleF],
+                    "X": [this.ruleX, "F[-X][X]+X", "F[+X]-X",
+                        "F[/X][X]F[\\\\X]+X", "F[\\X][X]/X", "F[/X]\\X",
+                        "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X"]
+                },
+                this.angle,
+                this.iterations,
+                this.scaleFactor
+            );
+        }
+
+        this.doGenerate();
 
         // shader code panels references
         this.shadersDiv = document.getElementById("shaders");
@@ -76,7 +103,24 @@ class MyScene extends CGFscene {
         // set the scene update period 
         // (to invoke the update() method every 50ms or as close as possible to that )
         this.setUpdatePeriod(50);
-        this.lightning.startAnimation(1);
+        //this.lightning.startAnimation(1);
+         
+        this.branchMaterial = new CGFappearance(this);
+        this.branchMaterial.setAmbient(0.3, 0.3, 0.3, 1);
+        this.branchMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.branchMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.branchMaterial.setShininess(10.0);
+        this.branchMaterial.loadTexture('texturas/tronco.jpg');
+        this.branchMaterial.setTextureWrap('MIRRORED_REPEAT', 'MIRRORED_REPEAT');
+
+        
+        this.leafMaterial = new CGFappearance(this);
+        this.leafMaterial.setAmbient(0.3, 0.3, 0.3, 1);
+        this.leafMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.leafMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.leafMaterial.setShininess(10.0);
+        this.leafMaterial.loadTexture('texturas/folhas.jpg');
+        this.leafMaterial.setTextureWrap('MIRRORED_REPEAT', 'MIRRORED_REPEAT');
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -115,6 +159,8 @@ class MyScene extends CGFscene {
         this.montanha = new CGFtexture(this, 'texturas/montanha1.jpg');
         this.fire = new CGFtexture(this, 'texturas/fire.jpg');
         this.dia = new CGFtexture(this, 'texturas/Dia.png');
+        this.penas = new CGFtexture(this, 'texturas/penas.jpg')
+        this.penasPretas = new CGFtexture(this,'texturas/black_feathers.jpg')
     }
 
     initCameras() {
@@ -146,6 +192,13 @@ class MyScene extends CGFscene {
                 this.nest.addBranch(this.bird.removeBranch());
             }
         }
+
+        if(this.active == 1){
+            this.lSystem.startAnimation(t);
+            this.active = 0;
+        }
+
+        this.lSystem.update(t);
 
     }
 
@@ -184,33 +237,41 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-
-        this.translate(0, 3, 0);
         this.bird.display();
 
         this.popMatrix();
-        
-        if(this.active == 1)
-        {
-        this.pushMatrix();
-
-            this.lSystem.display();
-        //this.lightning.display();
-
-        this.popMatrix();
-        }
 
         this.pushMatrix();
-
         this.nest.display();
-
         this.popMatrix();
 
         for (var i = 0; i < this.branchs.length; i++) {
-
             this.branchs[i].display();
         }
-       
+
+
+        this.pushMatrix();
+
+        this.translate(13,20,3);
+        this.rotate(Math.PI,0,0,1);
+        this.lSystem.display();
+
+        this.popMatrix();
+
+        this.pushMatrix();
+        for (var i=8; i>0 ;i--)
+        {  console.log("=======================");
+            this.translate(-this.treePosY[i+1],0,-this.treePosX[i+1]);
+            console.log(-this.treePosY[i+1]);
+            console.log(-this.treePosX[i+1]);
+            this.translate(this.treePosY[i],0,this.treePosX[i]);
+            console.log(this.treePosY[i]);
+            console.log(this.treePosX[i]);
+            //this.scale(1.25,1.25,1.25)
+            this.lPlant.display();
+        }
+
+        this.popMatrix();
 
         // ---- END Primitive drawing section
     }
@@ -242,8 +303,7 @@ class MyScene extends CGFscene {
             this.bird.startDescend();
         }
 
-        if(this.gui.isKeyPressed("KeyL"))
-        {
+        if (this.gui.isKeyPressed("KeyL")) {
             this.active = 1;
         }
     }

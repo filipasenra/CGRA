@@ -5,7 +5,7 @@
  * @param scene - Reference to MyScene object
  */
 
- const STANDARD_HEIGHT = 10;
+ const STANDARD_HEIGHT = 13;
  const BIRD_X = 1.5;
  const BIRD_Y = 3;
 
@@ -21,7 +21,7 @@ class MyBird extends CGFobject {
         this.velocity = 0;
         this.x = 0;
         this.y = STANDARD_HEIGHT;
-        this.z = 0;
+        this.z = -2;
         this.degrees = 0;
 
         this.head_body = new MySphere(scene, 20, 20);
@@ -35,6 +35,18 @@ class MyBird extends CGFobject {
         this.descend = false;
         this.ascend = false;
 
+        this.yellow = new CGFappearance(scene);
+        this.yellow.setAmbient(1.0, 1.0, 0, 1.0);
+        this.yellow.setDiffuse(1.0, 1.0, 0, 1.0);
+        this.yellow.setSpecular(1, 1, 1, 1.0);
+        this.yellow.setShininess(10.0);
+
+        this.black = new CGFappearance(scene);
+        this.black.setAmbient(0, 0, 0, 0);
+        this.black.setDiffuse(0, 0, 0, 0);
+        this.black.setSpecular(0, 0, 0, 0);
+        this.black.setShininess(10.0);
+
         // ---- END Primitive drawing section
     }
 
@@ -42,7 +54,7 @@ class MyBird extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.translate(this.x, this.y, this.z - 1);
+        this.scene.translate(this.x, this.y, this.z);
 
         this.scene.rotate(this.rotation, 0, 1, 0);
 
@@ -50,6 +62,8 @@ class MyBird extends CGFobject {
 
         //HEAD
         this.scene.pushMatrix();
+        this.scene.difuseMaterial.setTexture(this.scene.penas);
+        this.scene.difuseMaterial.apply();
 
         this.scene.scale(0.6, 0.6, 1);
         this.head_body.display();
@@ -60,9 +74,11 @@ class MyBird extends CGFobject {
         //BEAK
         this.scene.pushMatrix();
 
+
         this.scene.translate(0, 0, -0.5);
         this.scene.rotate(-Math.PI * 0.5, 1, 0, 0);
         this.scene.scale(0.4, 1, 0.4);
+        this.yellow.apply();
         this.beak.display();
 
         this.scene.popMatrix();
@@ -70,6 +86,7 @@ class MyBird extends CGFobject {
         //EYES
         this.scene.pushMatrix();
 
+        this.black.apply();
         this.scene.translate(-0.5, 0, -0.6);
         this.scene.rotate(Math.PI / 2.5, 0, 1, 0);
         this.scene.rotate(Math.PI * 0.5, 1, 0, 0);
@@ -91,6 +108,9 @@ class MyBird extends CGFobject {
         //BODY
         this.scene.pushMatrix();
 
+        this.scene.difuseMaterial.setTexture(this.scene.penas);
+        this.scene.difuseMaterial.apply();
+
         this.scene.translate(0, 0, 1.6);
         this.scene.rotate(Math.PI * 0.5, 1, 0, 0);
         this.scene.scale(1, 1.7, 1);
@@ -109,6 +129,10 @@ class MyBird extends CGFobject {
         this.scene.translate(-1.5, 0, 1.5);
         this.scene.rotate(-Math.PI * 0.5, 1, 0, 0);
         this.scene.scale(1.2, 1.6, 1);
+
+        this.scene.difuseMaterial.setTexture(this.scene.penas);
+        this.scene.difuseMaterial.apply();
+
         this.wingBase.display();
 
         this.scene.popMatrix();
@@ -120,6 +144,10 @@ class MyBird extends CGFobject {
         this.scene.rotate(Math.PI / 6, 0, 0, 1);
         this.scene.rotate(-Math.PI / 4, 0, 1, 0);
         this.scene.rotate(-Math.PI * 0.5, 1, 0, 0);
+
+       /* this.scene.difuseMaterial.setTexture(this.scene.penasPretas);
+        this.scene.difuseMaterial.apply();
+*/ this.black.apply();
         this.wingTip.display();
 
         this.scene.popMatrix();
@@ -138,6 +166,10 @@ class MyBird extends CGFobject {
         this.scene.translate(1.5, 0, 1.5);
         this.scene.rotate(-Math.PI * 0.5, 1, 0, 0);
         this.scene.scale(1.2, 1.6, 1.3);
+
+        this.scene.difuseMaterial.setTexture(this.scene.penas);
+        this.scene.difuseMaterial.apply();
+
         this.wingBase.display();
 
         this.scene.popMatrix();
@@ -150,6 +182,11 @@ class MyBird extends CGFobject {
         this.scene.rotate(-Math.PI / 6, 0, 0, 1);
         this.scene.rotate(Math.PI - Math.PI / 4, 0, 1, 0);
         this.scene.rotate(-Math.PI * 0.5, 1, 0, 0);
+
+        /*this.scene.difuseMaterial.setTexture(this.scene.penasPretas);
+        this.scene.difuseMaterial.apply();*/
+        this.black.apply();
+
         this.wingTip.display();
 
         this.scene.popMatrix();
@@ -224,7 +261,7 @@ class MyBird extends CGFobject {
         this.velocity = 0;
         this.x = 0;
         this.y = STANDARD_HEIGHT;
-        this.z = 0;
+        this.z = -2;
     }
 
     addBranch(branch){

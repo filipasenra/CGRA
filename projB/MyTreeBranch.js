@@ -29,23 +29,31 @@ class MyTreeBranch extends CGFobject {
         this.appearance.setShininess(120);
         this.appearance.loadTexture('texturas/tronco.jpg');
 
+        this.wood = new CGFtexture(this.scene, 'texturas/tronco.jpg')
+
     }
 
     display(){
 
+        this.appearance.setTexture(this.wood);
         this.appearance.apply();
 
         this.scene.pushMatrix();
 
         this.scene.translate(this.x, this.y, this.z);
 
-        this.scene.rotate(this.rotation + Math.PI/2, 0, 1, 0);
+        this.scene.rotate(this.rotation, 0, 1, 0);
+
+        this.scene.rotate(Math.PI/2, 0, 1, 0);
         this.scene.scale(0.3,0.3,0.3);
         this.scene.scale(0.2, 0.2, 4);
 
         this.cylinder.display();
 
         this.scene.popMatrix();
+
+        this.appearance.setTexture(null);
+        this.appearance.apply();
     }
 
     setCoordinates(x, y, z){

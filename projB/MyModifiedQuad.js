@@ -19,7 +19,7 @@ class MyModifiedQuad extends CGFobject {
 
     display(){
         this.scene.pushMatrix();
-        this.scene.scale(0.2,5,0.2);
+        this.scene.scale(0.05,5,0.05);
         this.scene.translate(0,0.5,0);
         this.quad.display();
         this.scene.popMatrix();
