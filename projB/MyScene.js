@@ -191,23 +191,13 @@ class MyScene extends CGFscene {
 
         this.popMatrix();
 
-        this.pushMatrix();
-        
         this.bird.display();
 
-        this.popMatrix();
-
-        this.pushMatrix();
         this.nest.display();
-        this.popMatrix();
-
-        this.pushMatrix();
 
         for (var i = 0; i < this.branchs.length; i++) {
             this.branchs[i].display();
         }
-
-        this.popMatrix();
 
         //TREES
 
@@ -228,7 +218,7 @@ class MyScene extends CGFscene {
 
         this.pushMatrix();
 
-        this.translate(10, 20, 15);
+        this.translate(10, 24, 0);
         this.rotate(Math.PI, 0, 0, 1);
         this.lSystem.display();
 

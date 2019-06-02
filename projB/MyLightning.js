@@ -6,6 +6,12 @@ class MyLightning extends MyLSystem {
 
     constructor(scene) {
         super(scene);
+
+        this.white = new CGFappearance(scene);
+        this.white.setAmbient(1, 1, 1, 1.0);
+        this.white.setDiffuse(1, 1, 1, 1.0);
+        this.white.setSpecular(1, 1, 1, 1.0);
+        this.white.setShininess(10.0);
     }
 
     initGrammar() {
@@ -47,7 +53,8 @@ class MyLightning extends MyLSystem {
             return;
 
         this.scene.pushMatrix();
-        this.scene.scale(this.scale*2, this.scale*2, this.scale*2);
+        this.white.apply();
+        this.scene.scale(this.scale*3, this.scale*3, this.scale*3);
 
 
         if (this.depth < 0)
