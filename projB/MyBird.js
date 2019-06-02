@@ -5,10 +5,10 @@
  * @param scene - Reference to MyScene object
  */
 
-const STANDARD_HEIGHT = 13;
+const STANDARD_HEIGHT = 7;
 const BIRD_X = 1.5;
 const BIRD_Y = 3;
-const DESCENT_VALUE = ((STANDARD_HEIGHT - 1) * 50 / 1000.0);
+const DESCENT_VALUE = ((STANDARD_HEIGHT - 1) / 1000.0);
 
 class MyBird extends CGFobject {
 
@@ -35,6 +35,7 @@ class MyBird extends CGFobject {
 
         this.descend = false;
         this.ascend = false;
+        this.initDescent = 0;
 
         this.yellow = new CGFappearance(scene);
         this.yellow.setAmbient(1.0, 1.0, 0, 1.0);
@@ -220,18 +221,24 @@ class MyBird extends CGFobject {
 
         if (this.descend == true) {
 
-            this.y -= DESCENT_VALUE;
+            if (this.initDescent == 0) {
+                this.initDescent = v;
+            }
 
+            this.y = STANDARD_HEIGHT - DESCENT_VALUE * (v - this.initDescent);
+
+            console.log(v - this.initDescent)
 
             if (this.y < 1) {
                 this.descend = false;
                 this.ascend = true;
             }
         } else if (this.ascend) {
-            this.y += DESCENT_VALUE;
+            this.y = DESCENT_VALUE * (v - this.initDescent) - STANDARD_HEIGHT;
 
-            if (this.y >= STANDARD_HEIGHT) {
+            if (this.y > STANDARD_HEIGHT) {
                 this.ascend = false;
+                this.initDescent = 0;
             }
         }
 
