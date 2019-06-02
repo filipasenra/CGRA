@@ -59,6 +59,9 @@ class MyScene extends CGFscene {
         this.branchMaterial.loadTexture('texturas/tronco.jpg');
         this.branchMaterial.setTextureWrap('MIRRORED_REPEAT', 'MIRRORED_REPEAT');
 
+        this.speedFactor = 1;
+        this.scaleFactor1 = 1;
+
     }
 
     initBranchs() {
@@ -194,7 +197,7 @@ class MyScene extends CGFscene {
         this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
-
+        this.scale(this.scaleFactor1,this.scaleFactor1,this.scaleFactor1);
         this.terrain.display();
 
         this.pushMatrix();
@@ -215,6 +218,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
+        this.scale(0.5,0.5,0.5);
         this.bird.display();
 
         this.popMatrix();
@@ -250,13 +254,12 @@ class MyScene extends CGFscene {
 
         this.pushMatrix();
 
-        this.translate(13, 20, 3);
+        this.translate(10, 20, 15);
         this.rotate(Math.PI, 0, 0, 1);
         this.lSystem.display();
 
         this.popMatrix();
 
-        this.popMatrix();
 
         // ---- END Primitive drawing section
     }
@@ -269,7 +272,7 @@ class MyScene extends CGFscene {
         }
 
         if (this.gui.isKeyPressed("KeyS")) {
-            this.bird.accelerate(0);
+            this.bird.accelerate(-0.2);
         }
 
         if (this.gui.isKeyPressed("KeyR")) {

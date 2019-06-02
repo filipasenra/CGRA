@@ -5,7 +5,7 @@
  * @param scene - Reference to MyScene object
  */
 
-const STANDARD_HEIGHT = 7;
+const STANDARD_HEIGHT = 3;
 const BIRD_X = 1.5;
 const BIRD_Y = 3;
 const DESCENT_VALUE = ((STANDARD_HEIGHT - 1) / 1000.0);
@@ -248,9 +248,9 @@ class MyBird extends CGFobject {
 
         this.degrees = Math.sin(v / (1000 / (2 * Math.PI)));
 
-        if (this.velocity != 0 || this.descend || this.ascend) {
-            this.x -= Math.sin(this.rotation) * this.velocity;
-            this.z -= Math.cos(this.rotation) * this.velocity;
+        if (this.velocity*this.scene.speedFactor!= 0 || this.descend || this.ascend) {
+            this.x -= Math.sin(this.rotation) * this.velocity*this.scene.speedFactor;
+            this.z -= Math.cos(this.rotation) * this.velocity*this.scene.speedFactor;
             
             if(!this.descend && !this.ascend)
                 this.y = this.degrees*0.4 + STANDARD_HEIGHT;
@@ -265,7 +265,9 @@ class MyBird extends CGFobject {
 
     accelerate(v) {
 
+        if(this.velocity+v>=0)
         this.velocity += v;
+        else this.velocity = 0;
     }
 
     reset() {
