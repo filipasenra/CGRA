@@ -7,20 +7,19 @@
 
 class MyTreeBranch extends CGFobject {
 
-    constructor(scene) {
+    constructor(scene, x = 0, z = 0, rotation = 0) {
         super(scene);
         this.init(scene);
+        this.x = x;
+        this.z = z;
+        this.rotation = rotation;
 
     }
     init(scene) {
 
         this.cylinder = new MyCylinderWBottow(scene);
 
-        this.x = 0;
         this.y = 1;
-        this.z = 0;
-
-        this.rotation = 0;
 
         this.appearance = new CGFappearance(this.scene);
         this.appearance.setAmbient(0.3, 0.3, 0.3, 1);

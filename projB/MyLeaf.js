@@ -31,6 +31,7 @@ class MyLeaf extends CGFobject {
         this.leafMaterial.setTexture(this.leaf);
         this.leafMaterial.apply();
 
+        this.scene.scale(2, 2, 2);
         this.triangle.display();
 
         this.leafMaterial.setTexture(null);

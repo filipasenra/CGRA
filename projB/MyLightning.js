@@ -38,6 +38,7 @@ class MyLightning extends MyLSystem {
         this.isDisplaying = true;
         this.length = this.scene.axiom.length;
         this.animationStart = t;
+        this.scene.doGenerateLighting();
     };
 
     display() {
@@ -46,7 +47,7 @@ class MyLightning extends MyLSystem {
             return;
 
         this.scene.pushMatrix();
-        this.scene.scale(this.scale*4, this.scale*4, this.scale*4);
+        this.scene.scale(this.scale*2, this.scale*2, this.scale*2);
 
 
         if (this.depth < 0)

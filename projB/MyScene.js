@@ -31,68 +31,16 @@ class MyScene extends CGFscene {
         this.terrain = new MyTerrain(this);
         this.nest = new MyNest(this);
         this.active = 0;
+        this.trees = new MyFlorest(this);
 
         this.branchs = [];
-        this.treePosX =[];
-        this.treePosY =[];
-
-        for(var i=20; i>0 ; i--)
-       { 
-          // console.log("---------------------")
-        this.treePosY.push(Math.floor((Math.random() * 16) + 1));   
-        //console.log(this.treePosY[i]);
-        this.treePosX.push(Math.floor((Math.random() * 16) + 1));
-       // console.log(this.treePosX[i]);
-       }
-        //Objects connected to MyInterface
-
-        this.branchs.push(new MyTreeBranch(this));
+        this.initBranchs();
 
         this.axiom = "X";
-        this.ruleF = "FF";
-        this.ruleX = "F[-X][X]F[-X]+FX";
-        this.angle = 25.0;
-        this.iterations = 3;
-        this.scaleFactor = 0.5;
+
         this.lSystem = new MyLightning(this);
-        this.lPlant = new MyLPlant(this);
+        this.initLightining();
 
-        /* Remember we need to escape de '\'*/
-        this.doGenerate = function () {
-            this.lSystem.generate(
-                this.axiom,
-                {
-                    "F": [this.ruleF],
-                    "X": [this.ruleX, "F[-X][X]+X", "F[+X]-X",
-                        "F[/X][X]F[\\\\X]+X", "F[\\X][X]/X", "F[/X]\\X",
-                        "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X"]
-                },
-                this.angle,
-                this.iterations,
-                this.scaleFactor
-            );
-        }
-
-        // do initial generation
-        this.doGenerate();
-
-         /* Remember we need to escape de '\'*/
-         this.doGenerate = function () {
-            this.lPlant.generate(
-                this.axiom,
-                {
-                    "F": [this.ruleF],
-                    "X": [this.ruleX, "F[-X][X]+X", "F[+X]-X",
-                        "F[/X][X]F[\\\\X]+X", "F[\\X][X]/X", "F[/X]\\X",
-                        "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X"]
-                },
-                this.angle,
-                this.iterations,
-                this.scaleFactor
-            );
-        }
-
-        this.doGenerate();
 
         // shader code panels references
         this.shadersDiv = document.getElementById("shaders");
@@ -103,8 +51,7 @@ class MyScene extends CGFscene {
         // set the scene update period 
         // (to invoke the update() method every 50ms or as close as possible to that )
         this.setUpdatePeriod(50);
-        //this.lightning.startAnimation(1);
-         
+
         this.branchMaterial = new CGFappearance(this);
         this.branchMaterial.setAmbient(0.3, 0.3, 0.3, 1);
         this.branchMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
@@ -114,6 +61,39 @@ class MyScene extends CGFscene {
         this.branchMaterial.setTextureWrap('MIRRORED_REPEAT', 'MIRRORED_REPEAT');
 
     }
+
+    initBranchs(){
+
+        this.branchs.push(new MyTreeBranch(this));
+    }
+
+    initLightining(){
+
+        this.angleLightining = 25.0;
+        this.iterationsLighting = 3;
+        this.scaleFactor = 0.5;
+
+        this.doGenerateLighting = function () {
+            this.lSystem.generate(
+                this.axiom,
+                {
+                    "F": ["FF"],
+                    "X": ["F[-X][X]F[-X]+FX", "F[-X][X]X[+X][X]", "F[+X]X[-X]X",
+                    "F[X][X]F[X]+X", "F[X][X]X",
+                    "XF[X][X]F[X]X"]
+                },
+                this.angleLightining,
+                this.iterationsLighting,
+                this.scaleFactor
+            );
+        }
+
+        // do initial generation
+        this.doGenerateLighting();
+
+
+    }
+
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
         this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
@@ -152,7 +132,7 @@ class MyScene extends CGFscene {
         this.fire = new CGFtexture(this, 'texturas/fire.jpg');
         this.dia = new CGFtexture(this, 'texturas/Dia.png');
         this.penas = new CGFtexture(this, 'texturas/penas.jpg')
-        this.penasPretas = new CGFtexture(this,'texturas/black_feathers.jpg')
+        this.penasPretas = new CGFtexture(this, 'texturas/black_feathers.jpg')
     }
 
     initCameras() {
@@ -185,7 +165,7 @@ class MyScene extends CGFscene {
             }
         }
 
-        if(this.active == 1){
+        if (this.active == 1) {
             this.lSystem.startAnimation(t);
             this.active = 0;
         }
@@ -237,28 +217,35 @@ class MyScene extends CGFscene {
         this.nest.display();
         this.popMatrix();
 
+        this.pushMatrix();
+
         for (var i = 0; i < this.branchs.length; i++) {
             this.branchs[i].display();
         }
 
+        this.popMatrix();
+
+        //TREES
+
         this.pushMatrix();
 
-        for (var i=8; i>0 ;i--)
-        {  
-            this.translate(-this.treePosY[i+1],0,-this.treePosX[i+1]);
-            this.translate(this.treePosY[i],0,this.treePosX[i]);
-            
-        
-            this.lPlant.display();
-        }
+        this.translate(1, 0, -10)
+        this.trees.display();
+
+        this.popMatrix();
+
+        this.pushMatrix();
+
+        this.translate(-14, 0, -10)
+        this.trees.display();
 
         this.popMatrix();
 
 
         this.pushMatrix();
 
-        this.translate(13,20,3);
-        this.rotate(Math.PI,0,0,1);
+        this.translate(13, 20, 3);
+        this.rotate(Math.PI, 0, 0, 1);
         this.lSystem.display();
 
         this.popMatrix();

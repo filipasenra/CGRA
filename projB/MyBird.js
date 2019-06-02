@@ -217,7 +217,7 @@ class MyBird extends CGFobject {
 
     updatePosition(v) {
 
-        this.degrees += Math.PI/6;
+        this.degrees = Math.cos(v/(1000/(2*Math.PI)) + 1);
 
         if(this.descend == true){
             this.y -= 0.2;
