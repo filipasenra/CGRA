@@ -68,9 +68,6 @@ class MyScene extends CGFscene {
 
         for (var i = 0; i < 5; i++) {
             this.branchs.push(new MyTreeBranch(this, Math.random() * 10 - 1, Math.random() * 10 - 1, Math.PI / (Math.random() * 10 + 1)));
-
-            console.log(this.branchs[i].x)
-            console.log(this.branchs[i].z)
         }
     }
 
@@ -166,8 +163,7 @@ class MyScene extends CGFscene {
 
                 if (this.bird.checkCollision(this.branchs[i])) {
                     this.bird.addBranch(this.branchs[i]);
-                    this.branchs.splice(i, i);
-                    console.log(this.branchs.length)
+                    this.branchs.splice(i, 1);
                     return;
                 }
             }
@@ -218,7 +214,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-        this.scale(0.5,0.5,0.5);
+        
         this.bird.display();
 
         this.popMatrix();

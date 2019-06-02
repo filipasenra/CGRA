@@ -6,7 +6,7 @@
  */
 
 const STANDARD_HEIGHT = 3;
-const BIRD_X = 1.5;
+const BIRD_X = 3;
 const BIRD_Y = 3;
 const DESCENT_VALUE = ((STANDARD_HEIGHT - 1) / 1000.0);
 
@@ -60,7 +60,7 @@ class MyBird extends CGFobject {
 
         this.scene.rotate(this.rotation, 0, 1, 0);
 
-        this.scene.translate(0, 0, -1);
+        this.scene.scale(0.5, 0.5, 0.5);
 
         this.scene.pushMatrix();
 
@@ -185,8 +185,6 @@ class MyBird extends CGFobject {
         this.scene.rotate(Math.PI - Math.PI / 4, 0, 1, 0);
         this.scene.rotate(-Math.PI * 0.5, 1, 0, 0);
 
-        /*this.scene.difuseMaterial.setTexture(this.scene.penasPretas);
-        this.scene.difuseMaterial.apply();*/
         this.black.apply();
 
         this.wingTip.display();
