@@ -64,7 +64,13 @@ class MyScene extends CGFscene {
 
     initBranchs(){
 
-        this.branchs.push(new MyTreeBranch(this));
+        for(var i = 0; i < 5; i++)
+        {
+            this.branchs.push(new MyTreeBranch(this, Math.random()*10-1, Math.random()*10-1, Math.PI/(Math.random()*10+1)));
+
+            console.log(this.branchs[i].x)
+            console.log(this.branchs[i].z)
+        }
     }
 
     initLightining(){
@@ -269,11 +275,11 @@ class MyScene extends CGFscene {
         }
 
         if (this.gui.isKeyPressed("KeyA")) {
-            this.bird.turn(10);
+            this.bird.turn(Math.PI/4);
         }
 
         if (this.gui.isKeyPressed("KeyD")) {
-            this.bird.turn(-30);
+            this.bird.turn(-Math.PI/4);
         }
 
         if (this.gui.isKeyPressed("KeyP")) {

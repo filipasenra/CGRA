@@ -5,9 +5,10 @@
  * @param scene - Reference to MyScene object
  */
 
- const STANDARD_HEIGHT = 13;
- const BIRD_X = 1.5;
- const BIRD_Y = 3;
+const STANDARD_HEIGHT = 13;
+const BIRD_X = 1.5;
+const BIRD_Y = 3;
+const DESCENT_VALUE = ((STANDARD_HEIGHT - 1) * 50 / 1000.0);
 
 class MyBird extends CGFobject {
 
@@ -147,9 +148,7 @@ class MyBird extends CGFobject {
         this.scene.rotate(-Math.PI / 4, 0, 1, 0);
         this.scene.rotate(-Math.PI * 0.5, 1, 0, 0);
 
-       /* this.scene.difuseMaterial.setTexture(this.scene.penasPretas);
-        this.scene.difuseMaterial.apply();
-*/ this.black.apply();
+        this.black.apply();
         this.wingTip.display();
 
         this.scene.popMatrix();
@@ -199,7 +198,7 @@ class MyBird extends CGFobject {
 
         this.scene.popMatrix();;
 
-        if(this.branch != null){
+        if (this.branch != null) {
             this.scene.pushMatrix();
 
             this.branch.setCoordinates(this.x, this.y - 1.2, this.z);
@@ -217,35 +216,29 @@ class MyBird extends CGFobject {
 
     updatePosition(v) {
 
-        this.degrees = Math.cos(v/(1000/(2*Math.PI)) + 1);
+        this.degrees = Math.sin(v / (1000 / (2 * Math.PI)));
 
-        if(this.descend == true){
-            this.y -= 0.2;
+        if (this.descend == true) {
+            this.y -= DESCENT_VALUE;
 
 
-           if( this.y < 0){
+            if (this.y < 1) {
                 this.descend = false;
                 this.ascend = true;
             }
+        } else if (this.ascend) {
+            this.y += DESCENT_VALUE;
 
-            return;
-        }
-
-        if(this.ascend){
-            this.y += 0.2;
-
-            if(this.y > 10){
+            if (this.y >= STANDARD_HEIGHT) {
                 this.ascend = false;
             }
-
-            return;
         }
 
-        if (this.velocity != 0) {
+        if (this.velocity != 0 || this.descend || this.ascend) {
             this.x -= Math.sin(this.rotation) * this.velocity;
             this.z -= Math.cos(this.rotation) * this.velocity;
         } else {
-            this.y = Math.sin(v/(1000/(2*Math.PI))) + STANDARD_HEIGHT;
+            this.y = this.degrees + STANDARD_HEIGHT;
         }
     }
 
@@ -266,19 +259,19 @@ class MyBird extends CGFobject {
         this.z = 0;
     }
 
-    addBranch(branch){
+    addBranch(branch) {
 
-        if(this.branch == null){
+        if (this.branch == null) {
             this.branch = branch;
         }
     }
 
-    hasBranch(){
+    hasBranch() {
 
         return this.branch != null;
     }
 
-    removeBranch(){
+    removeBranch() {
 
         var branch_tmp = this.branch;
         this.branch = null;
@@ -286,42 +279,42 @@ class MyBird extends CGFobject {
         return branch_tmp;
     }
 
-    getBranch(){
+    getBranch() {
         return this.branch;
     }
 
-    startDescend(){
+    startDescend() {
 
-        if(this.descend == false && this.ascend == false){
+        if (this.descend == false && this.ascend == false) {
             this.descend = true;
         }
 
     }
 
-    checkCollision(object)  {
+    checkCollision(object) {
 
-        if(object.getX() > (this.x + BIRD_X) || object.getX() < (this.x - BIRD_X))
+        if (object.getX() > (this.x + BIRD_X) || object.getX() < (this.x - BIRD_X))
             return false;
 
-        if(object.getZ() > (this.z + BIRD_Y) || object.getZ() < (this.z - BIRD_Y))
+        if (object.getZ() > (this.z + BIRD_Y) || object.getZ() < (this.z - BIRD_Y))
             return false;
 
-        if(this.y < 1 && this.y > 0)
+        if (this.y < 1.5 && this.y > 1)
             return true;
 
         return false;
 
     }
 
-    getX(){
+    getX() {
         return this.x;
     }
 
-    getY(){
+    getY() {
         return this.y;
     }
 
-    getZ(){
+    getZ() {
         return this.z;
     }
 }

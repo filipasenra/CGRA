@@ -10,19 +10,20 @@
 
 class MyNest extends CGFobject {
 
-    constructor(scene) {
+    constructor(scene, x = -5, y = 0, z = 6) {
         super(scene);
         this.init(scene);
+
+
+        this.x = x;
+        this.y = y;
+        this.z = z;
 
     }
     init(scene) {
 
         this.partOfNest = new MyBunchOfTwigs(scene);
         this.branchs = [];
-
-        this.x = 6;
-        this.y = 0;
-        this.z = 0;
 
     }
 
