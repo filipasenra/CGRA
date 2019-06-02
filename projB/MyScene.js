@@ -113,14 +113,6 @@ class MyScene extends CGFscene {
         this.branchMaterial.loadTexture('texturas/tronco.jpg');
         this.branchMaterial.setTextureWrap('MIRRORED_REPEAT', 'MIRRORED_REPEAT');
 
-        
-        this.leafMaterial = new CGFappearance(this);
-        this.leafMaterial.setAmbient(0.3, 0.3, 0.3, 1);
-        this.leafMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.leafMaterial.setSpecular(0.1, 0.1, 0.1, 1);
-        this.leafMaterial.setShininess(10.0);
-        this.leafMaterial.loadTexture('texturas/folhas.jpg');
-        this.leafMaterial.setTextureWrap('MIRRORED_REPEAT', 'MIRRORED_REPEAT');
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -249,27 +241,25 @@ class MyScene extends CGFscene {
             this.branchs[i].display();
         }
 
+        this.pushMatrix();
+
+        for (var i=8; i>0 ;i--)
+        {  
+            this.translate(-this.treePosY[i+1],0,-this.treePosX[i+1]);
+            this.translate(this.treePosY[i],0,this.treePosX[i]);
+            
+        
+            this.lPlant.display();
+        }
+
+        this.popMatrix();
+
 
         this.pushMatrix();
 
         this.translate(13,20,3);
         this.rotate(Math.PI,0,0,1);
         this.lSystem.display();
-
-        this.popMatrix();
-
-        this.pushMatrix();
-        for (var i=8; i>0 ;i--)
-        {  //console.log("=======================");
-            this.translate(-this.treePosY[i+1],0,-this.treePosX[i+1]);
-            //console.log(-this.treePosY[i+1]);
-            //console.log(-this.treePosX[i+1]);
-            this.translate(this.treePosY[i],0,this.treePosX[i]);
-            //console.log(this.treePosY[i]);
-            //console.log(this.treePosX[i]);
-            //this.scale(1.25,1.25,1.25)
-            this.lPlant.display();
-        }
 
         this.popMatrix();
 
