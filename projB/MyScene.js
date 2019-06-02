@@ -62,18 +62,17 @@ class MyScene extends CGFscene {
 
     }
 
-    initBranchs(){
+    initBranchs() {
 
-        for(var i = 0; i < 5; i++)
-        {
-            this.branchs.push(new MyTreeBranch(this, Math.random()*10-1, Math.random()*10-1, Math.PI/(Math.random()*10+1)));
+        for (var i = 0; i < 5; i++) {
+            this.branchs.push(new MyTreeBranch(this, Math.random() * 10 - 1, Math.random() * 10 - 1, Math.PI / (Math.random() * 10 + 1)));
 
             console.log(this.branchs[i].x)
             console.log(this.branchs[i].z)
         }
     }
 
-    initLightining(){
+    initLightining() {
 
         this.angleLightining = 25.0;
         this.iterationsLighting = 3;
@@ -85,8 +84,8 @@ class MyScene extends CGFscene {
                 {
                     "F": ["FF"],
                     "X": ["F[-X][X]F[-X]+FX", "F[-X][X]X[+X][X]", "F[+X]X[-X]X",
-                    "F[X][X]F[X]+X", "F[X][X]X",
-                    "XF[X][X]F[X]X"]
+                        "F[X][X]F[X]+X", "F[X][X]X",
+                        "XF[X][X]F[X]X"]
                 },
                 this.angleLightining,
                 this.iterationsLighting,
@@ -155,19 +154,20 @@ class MyScene extends CGFscene {
 
         this.bird.updatePosition(t);
 
-        for (var i = 0; i < this.branchs.length; i++) {
-
-            if (this.bird.checkCollision(this.branchs[i])) {
-                this.bird.addBranch(this.branchs[i]);
-                this.branchs.splice(i, i + 1);
-                i--;
-                break;
-            }
-        }
-
         if (this.bird.hasBranch()) {
             if (this.nest.checkCollision(this.bird.branch) == true) {
                 this.nest.addBranch(this.bird.removeBranch());
+            }
+        } else {
+
+            for (var i = 0; i < this.branchs.length; i++) {
+
+                if (this.bird.checkCollision(this.branchs[i])) {
+                    this.bird.addBranch(this.branchs[i]);
+                    this.branchs.splice(i, i);
+                    console.log(this.branchs.length)
+                    return;
+                }
             }
         }
 
@@ -275,11 +275,11 @@ class MyScene extends CGFscene {
         }
 
         if (this.gui.isKeyPressed("KeyA")) {
-            this.bird.turn(Math.PI/4);
+            this.bird.turn(Math.PI / 4);
         }
 
         if (this.gui.isKeyPressed("KeyD")) {
-            this.bird.turn(-Math.PI/4);
+            this.bird.turn(-Math.PI / 4);
         }
 
         if (this.gui.isKeyPressed("KeyP")) {

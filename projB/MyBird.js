@@ -219,6 +219,7 @@ class MyBird extends CGFobject {
         this.degrees = Math.sin(v / (1000 / (2 * Math.PI)));
 
         if (this.descend == true) {
+
             this.y -= DESCENT_VALUE;
 
 
