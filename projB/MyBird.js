@@ -6,8 +6,8 @@
  */
 
 const STANDARD_HEIGHT = 3;
-const BIRD_X = 3;
-const BIRD_Y = 3;
+const BIRD_X = 2;
+const BIRD_Y = 2;
 const DESCENT_VALUE = ((STANDARD_HEIGHT - 1) / 1000.0);
 
 class MyBird extends CGFobject {
