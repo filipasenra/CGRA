@@ -4,8 +4,6 @@ TPs exercises solutions and projects for the CGRA curricular unit.
 ## Grades
 **First Project**: 17.3 | **Second Project**: 18.2
 
-**Second Project**: 
-
 ## Project Infos
 * Date: 2nd Year, 2st Semester, 2018/2019
 * Course: Computação Gráfica (CGRA) | Graphic Computing
